@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gahanga Smart Parish — Documentation Portal | AbyTech Hub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root {
+      --brand: #1a5c78;
+      --brand-light: #e8621a;
+      --brand-pale: #e8f3f7;
+      --brand-dark: #0a1e28;
+      --text: #1a1a1a;
+      --text-muted: #555;
+      --border: #c5dde6;
+      --bg: #f4f9fb;
+      --white: #ffffff;
+      --shadow: 0 2px 16px rgba(10,30,40,0.10);
+      --shadow-hover: 0 8px 32px rgba(10,30,40,0.18);
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Top bar ── */
+    .topbar {
+      background: var(--brand-dark);
+      padding: 0 48px;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .topbar-brand { display: flex; align-items: center; gap: 14px; }
+    .topbar-brand-name { font-size: 15px; font-weight: 800; color: #fff; letter-spacing: 0.3px; }
+    .topbar-brand-name span { color: var(--brand-light); }
+    .topbar-brand-sub { font-size: 11px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; margin-top: 2px; }
+
+    .topbar-right { font-size: 12px; color: rgba(255,255,255,0.4); }
+    .topbar-right strong { color: rgba(255,255,255,0.7); }
+
+    /* ── Hero ── */
+    .hero {
+      background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand) 60%, var(--brand-light) 100%);
+      padding: 72px 48px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      right: -80px; top: -80px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.04);
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      left: -60px; bottom: -100px;
+      width: 320px; height: 320px;
+      border-radius: 50%;
+      background: rgba(232,98,26,0.12);
+    }
+
+    .hero-inner { position: relative; z-index: 1; max-width: 680px; margin: 0 auto; }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 24px;
+      padding: 6px 18px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: rgba(255,255,255,0.9);
+      margin-bottom: 28px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+      letter-spacing: -1.5px;
+      margin-bottom: 16px;
+    }
+
+    .hero h1 span { color: #ffd580; }
+
+    .hero-sub {
+      font-size: 17px;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+
+    .hero-meta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    .hero-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+    }
+
+    .hero-meta-item i { color: rgba(255,255,255,0.4); font-size: 12px; }
+    .hero-meta-item strong { color: rgba(255,255,255,0.85); }
+
+    /* ── Main content ── */
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 64px 32px;
+      flex: 1;
+    }
+
+    /* ── Section label ── */
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: var(--brand);
+      margin-bottom: 10px;
+    }
+    .section-label::before { content: ''; width: 20px; height: 2px; background: var(--brand); border-radius: 1px; }
+
+    h2 { font-size: 26px; font-weight: 800; color: var(--brand-dark); margin-bottom: 8px; letter-spacing: -0.5px; }
+    .section-desc { font-size: 15px; color: var(--text-muted); margin-bottom: 32px; }
+
+    /* ── Document cards ── */
+    .doc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-bottom: 64px;
+    }
+
+    .doc-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+    }
+
+    .doc-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-color: var(--brand);
+    }
+
+    .doc-card-header {
+      background: linear-gradient(135deg, var(--brand-dark) 0%, var(--brand) 100%);
+      padding: 32px 28px 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .doc-card-header::after {
+      content: '';
+      position: absolute;
+      right: -30px; bottom: -40px;
+      width: 160px; height: 160px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .doc-card-header.meeting-2 {
+      background: linear-gradient(135deg, #0a1e28 0%, #1a5c78 40%, #2a7a5a 100%);
+    }
+
+    .doc-meeting-num {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: rgba(255,255,255,0.55);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .doc-meeting-badge {
+      background: var(--brand-light);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    .doc-card-header h3 {
+      font-size: 22px;
+      font-weight: 800;
+      color: #fff;
+      line-height: 1.2;
+      margin-bottom: 8px;
+      letter-spacing: -0.5px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .doc-date {
+      font-size: 13px;
+      color: rgba(255,255,255,0.55);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .doc-card-body {
+      padding: 24px 28px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .doc-purpose {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .doc-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .doc-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      background: var(--brand-pale);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 4px 10px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--brand);
+    }
+
+    .doc-tag i { font-size: 10px; }
+
+    .doc-sections {
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+    }
+
+    .doc-sections-label {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+
+    .doc-section-list {
+      list-style: none;
+      padding: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 12px;
+    }
+
+    .doc-section-list li {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 2px 0;
+    }
+
+    .doc-section-list li i { color: var(--brand-light); font-size: 9px; flex-shrink: 0; }
+
+    .doc-card-footer {
+      padding: 16px 28px;
+      border-top: 1px solid var(--border);
+      background: #fafcfe;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .doc-open-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--brand);
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      padding: 9px 18px;
+      border-radius: 10px;
+      transition: background 0.15s;
+    }
+
+    .doc-card:hover .doc-open-btn { background: var(--brand-dark); }
+    .doc-open-btn i { font-size: 11px; }
+
+    .doc-status {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-green, #2d7a4f);
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    /* ── Project summary strip ── */
+    .summary-strip {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 28px 32px;
+      box-shadow: var(--shadow);
+      margin-bottom: 64px;
+    }
+
+    .summary-strip-inner {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      text-align: center;
+    }
+
+    .summary-stat {
+      padding: 8px 16px;
+      border-right: 1px solid var(--border);
+    }
+
+    .summary-stat:last-child { border-right: none; }
+
+    .summary-stat .num {
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--brand);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .summary-stat .lbl {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+    }
+
+    /* ── About section ── */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .about-block {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .about-block h4 {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--brand-dark);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .about-block h4 i { color: var(--brand-light); font-size: 14px; }
+
+    .about-block p {
+      font-size: 13.5px;
+      color: var(--text-muted);
+      line-height: 1.65;
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: var(--brand-dark);
+      color: rgba(255,255,255,0.45);
+      padding: 24px 48px;
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer strong { color: rgba(255,255,255,0.75); }
+
+    /* ── Responsive ── */
+    @media (max-width: 720px) {
+      .topbar { padding: 0 20px; }
+      .hero { padding: 48px 20px 56px; }
+      .hero h1 { font-size: 28px; }
+      .container { padding: 40px 20px; }
+      .doc-grid { grid-template-columns: 1fr; }
+      .summary-strip-inner { grid-template-columns: 1fr 1fr; }
+      .summary-stat:nth-child(2) { border-right: none; }
+      .summary-stat:nth-child(3) { border-top: 1px solid var(--border); }
+      .about-grid { grid-template-columns: 1fr; }
+      .doc-section-list { grid-template-columns: 1fr; }
+      .footer { padding: 20px; flex-direction: column; gap: 10px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- TOP BAR -->
+  <div class="topbar">
+    <div class="topbar-brand">
+      <svg viewBox="0 0 80 90" width="36" height="40" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="40,0 80,90 62.5,90 40,32.5 17.5,90 0,90" fill="#1a5c78"/>
+        <rect x="55" y="2.5" width="30" height="10" fill="#e8621a"/>
+        <rect x="64" y="2.5" width="12" height="45" fill="#e8621a"/>
+      </svg>
+      <div>
+        <div class="topbar-brand-name">ABY<span>TECH</span>-HUB</div>
+        <div class="topbar-brand-sub">Documentation Portal</div>
+      </div>
+    </div>
+    <div class="topbar-right">
+      Client: <strong>Saint Joseph Gahanga Parish</strong> &nbsp;·&nbsp; Project: <strong>Smart Parish Management System</strong>
+    </div>
+  </div>
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <i class="fa-solid fa-folder-open"></i>
+        Project Documentation
+      </div>
+      <h1>Gahanga Smart Parish<br><span>Management System</span></h1>
+      <p class="hero-sub">All meeting records, decisions, and technical documentation prepared by AbyTech Hub for Saint Joseph Gahanga Parish — organized in one place.</p>
+      <div class="hero-meta">
+        <div class="hero-meta-item">
+          <i class="fa-solid fa-building-columns"></i>
+          <span>Client: <strong>Saint Joseph Gahanga Parish</strong></span>
+        </div>
+        <div class="hero-meta-item">
+          <i class="fa-solid fa-code"></i>
+          <span>Developer: <strong>AbyTech Hub</strong></span>
+        </div>
+        <div class="hero-meta-item">
+          <i class="fa-solid fa-location-dot"></i>
+          <span>Location: <strong>Gahanga, Rwanda</strong></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN -->
+  <div class="container">
+
+    <!-- Stats strip -->
+    <div class="summary-strip">
+      <div class="summary-strip-inner">
+        <div class="summary-stat">
+          <div class="num">2</div>
+          <div class="lbl">Meetings Documented</div>
+        </div>
+        <div class="summary-stat">
+          <div class="num">8</div>
+          <div class="lbl">System Modules</div>
+        </div>
+        <div class="summary-stat">
+          <div class="num">5</div>
+          <div class="lbl">Hierarchy Levels</div>
+        </div>
+        <div class="summary-stat">
+          <div class="num">6</div>
+          <div class="lbl">Sacrament Types</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Meeting documents -->
+    <div class="section-label">Meeting Records</div>
+    <h2>Documentation</h2>
+    <p class="section-desc">Click any document to open the full meeting record.</p>
+
+    <div class="doc-grid">
+
+      <!-- Meeting 1 -->
+      <a class="doc-card" href="GAHANGA SMART PARISH - RAPORO Y'INAMA YA MBERE - ABYTECH.html">
+        <div class="doc-card-header">
+          <div class="doc-meeting-num">
+            <span class="doc-meeting-badge">Meeting 1</span>
+            First Meeting
+          </div>
+          <h3>Scope Confirmation &amp; Project Agreement</h3>
+          <div class="doc-date">
+            <i class="fa-regular fa-calendar"></i>
+            June 10, 2026
+          </div>
+        </div>
+        <div class="doc-card-body">
+          <p class="doc-purpose">AbyTech Hub's first formal meeting with the parish — confirming the system scope, agreeing on all 8 modules, and establishing commitments before development begins.</p>
+          <div class="doc-tags">
+            <span class="doc-tag"><i class="fa-solid fa-check"></i> 8 modules agreed</span>
+            <span class="doc-tag"><i class="fa-solid fa-sitemap"></i> 5-level hierarchy</span>
+            <span class="doc-tag"><i class="fa-solid fa-handshake"></i> Commitments made</span>
+          </div>
+          <div class="doc-sections">
+            <div class="doc-sections-label">Sections included</div>
+            <ul class="doc-section-list">
+              <li><i class="fa-solid fa-circle"></i>Meeting Details</li>
+              <li><i class="fa-solid fa-circle"></i>Project Background</li>
+              <li><i class="fa-solid fa-circle"></i>Decisions Made</li>
+              <li><i class="fa-solid fa-circle"></i>Data Structure</li>
+              <li><i class="fa-solid fa-circle"></i>All 8 Modules</li>
+              <li><i class="fa-solid fa-circle"></i>Commitments</li>
+              <li><i class="fa-solid fa-circle"></i>Authorization</li>
+            </ul>
+          </div>
+        </div>
+        <div class="doc-card-footer">
+          <div class="doc-status">
+            <i class="fa-solid fa-circle-check" style="color:#2d7a4f;"></i> Complete
+          </div>
+          <div class="doc-open-btn">
+            Open Document <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </div>
+      </a>
+
+      <!-- Meeting 2 -->
+      <a class="doc-card" href="GAHANGA SMART PARISH - RAPORO Y'INAMA YA KABIRI - ABYTECH.html">
+        <div class="doc-card-header meeting-2">
+          <div class="doc-meeting-num">
+            <span class="doc-meeting-badge">Meeting 2</span>
+            Second Meeting
+          </div>
+          <h3>Data Requirements &amp; Module Specification</h3>
+          <div class="doc-date">
+            <i class="fa-regular fa-calendar"></i>
+            October 12, 2024
+          </div>
+        </div>
+        <div class="doc-card-body">
+          <p class="doc-purpose">ICT Committee meeting where the full data requirements for all 8 modules were reviewed and agreed upon — the detailed specification of exactly what data the software must capture.</p>
+          <div class="doc-tags">
+            <span class="doc-tag"><i class="fa-solid fa-database"></i> Data requirements</span>
+            <span class="doc-tag"><i class="fa-solid fa-list-check"></i> Use cases agreed</span>
+            <span class="doc-tag"><i class="fa-solid fa-church"></i> 6 sacraments mapped</span>
+          </div>
+          <div class="doc-sections">
+            <div class="doc-sections-label">Sections included</div>
+            <ul class="doc-section-list">
+              <li><i class="fa-solid fa-circle"></i>Meeting Details</li>
+              <li><i class="fa-solid fa-circle"></i>Objective</li>
+              <li><i class="fa-solid fa-circle"></i>Decisions Made</li>
+              <li><i class="fa-solid fa-circle"></i>All 8 Modules</li>
+              <li><i class="fa-solid fa-circle"></i>Sacrament Table</li>
+              <li><i class="fa-solid fa-circle"></i>Integrations</li>
+              <li><i class="fa-solid fa-circle"></i>Authorization</li>
+            </ul>
+          </div>
+        </div>
+        <div class="doc-card-footer">
+          <div class="doc-status">
+            <i class="fa-solid fa-circle-check" style="color:#2d7a4f;"></i> Complete
+          </div>
+          <div class="doc-open-btn">
+            Open Document <i class="fa-solid fa-arrow-right"></i>
+          </div>
+        </div>
+      </a>
+
+    </div>
+
+    <!-- About section -->
+    <div class="section-label">Project Overview</div>
+    <h2>About This Project</h2>
+    <p class="section-desc">Background on the Gahanga Management System and the two parties involved.</p>
+
+    <div class="about-grid">
+      <div class="about-block">
+        <h4><i class="fa-solid fa-building-columns"></i> Saint Joseph Gahanga Parish</h4>
+        <p>A Catholic parish in Gahanga, Rwanda. Currently managing all parishioner records — households, sacraments, finances, and group memberships — on paper. The goal is to digitize all of this into a single, locally hosted management system.</p>
+      </div>
+      <div class="about-block">
+        <h4><i class="fa-solid fa-code"></i> AbyTech Hub</h4>
+        <p>The technology company hired by the parish to design and build the Gahanga Smart Parish Management System. Responsible for all technical specification, development, and delivery of the 8-module software platform.</p>
+      </div>
+      <div class="about-block">
+        <h4><i class="fa-solid fa-table-cells"></i> What Is Being Built</h4>
+        <p>A custom web application covering 8 modules: Christian Management, Fund Management, Publications, Group Management, Sacraments, Parish Website, Reports &amp; Dashboard, and External Integrations (SMS, MOMO, social media).</p>
+      </div>
+      <div class="about-block">
+        <h4><i class="fa-solid fa-shield-halved"></i> Data Privacy Principle</h4>
+        <p>All parishioner data will be stored on a local server at the parish premises — not on any foreign cloud platform. This was confirmed as a non-negotiable requirement by the parish leadership at the first meeting.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div>
+      <strong>Gahanga Smart Parish Management System</strong> · Documentation Portal<br>
+      Prepared by AbyTech Hub · Client: Saint Joseph Gahanga Parish · Confidential
+    </div>
+    <div style="text-align:right;">
+      <strong>2</strong> documents &nbsp;·&nbsp; <strong>8</strong> modules &nbsp;·&nbsp; <strong>2</strong> meetings
+    </div>
+  </div>
+
+</body>
+</html>
