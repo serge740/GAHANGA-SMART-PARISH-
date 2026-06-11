@@ -1183,46 +1183,28 @@
       <section class="section" id="module-1">
         <div class="section-label">Module 1</div>
         <h2>Christian Management</h2>
-        <p class="lead">The core of the system. Every Catholic household in the parish will be registered using the household registration form. This module is the foundation that all other modules reference.</p>
+        <p class="lead">The Christian Management module is the foundation of the entire system. Every other module — sacraments, funds, groups, reports — traces back to a household record stored here. All current paper household registration forms are replaced by this digital equivalent.</p>
 
-        <h3>Use Cases</h3>
-        <div class="flow">
-          <div class="flow-step">
-            <div class="flow-number">1</div>
-            <div class="flow-content">
-              <h4>Register a New Household</h4>
-              <p>A new Catholic family fills in the household registration form. The system records their household at the correct level in the 5-level hierarchy and links them to their chapel zone.</p>
-            </div>
-          </div>
-          <div class="flow-step">
-            <div class="flow-number">2</div>
-            <div class="flow-content">
-              <h4>Edit &amp; Update Household Records</h4>
-              <p>Parish staff can correct or update any household information — names, address, family status, or member changes — at any time.</p>
-            </div>
-          </div>
-          <div class="flow-step">
-            <div class="flow-number">3</div>
-            <div class="flow-content">
-              <h4>Transfer a Household</h4>
-              <p>When a family moves to a different zone or chapel area, their record is transferred — not duplicated. Full history moves with them.</p>
-            </div>
-          </div>
-          <div class="flow-step">
-            <div class="flow-number">4</div>
-            <div class="flow-content">
-              <h4>View Full Household Profile</h4>
-              <p>One-click access to the complete household profile — all members, sacraments received, financial history, and group memberships in a single view.</p>
-            </div>
-          </div>
-          <div class="flow-step">
-            <div class="flow-number">5</div>
-            <div class="flow-content">
-              <h4>Deactivate a Household</h4>
-              <p>If a family leaves the parish or a record is no longer active, it can be deactivated — data is preserved for reporting history but removed from active lists.</p>
-            </div>
-          </div>
-        </div>
+        <h3>How It Works</h3>
+        <p>Parish staff register every Catholic household in the parish using a digital form that mirrors the existing paper household registration form. When a household is created, the system automatically places it at the correct position in the 5-level hierarchy — linked to its Chapel Zone, Family Group Cluster, and Family Cluster. Once registered, the household has a permanent profile page that consolidates all information about that family: every member listed, all sacraments they have received, their financial transaction history with the parish, and which parish groups they belong to. Everything about one family is visible from a single screen.</p>
+        <p>Staff can open any household record at any time to correct or update information — names, marital status, address, member additions or removals. Changes take effect immediately across the whole system. When a family physically moves to a different zone or chapel area, their record is transferred to the new location without duplicating it — the complete history of that household follows them. If a family leaves the parish entirely, their record is deactivated rather than deleted. It no longer appears in active reports and counts, but the data is retained in the database for historical audit purposes.</p>
+
+        <h3>Data Stored Per Household</h3>
+        <table>
+          <thead>
+            <tr><th style="width:30%">Field</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Household Head</td><td>Full name of the head of the household</td></tr>
+            <tr><td>Hierarchy Position</td><td>The Chapel Zone, Family Group Cluster, and Family Cluster this household belongs to</td></tr>
+            <tr><td>Members</td><td>Each individual in the household: name, date of birth, gender, relationship to household head</td></tr>
+            <tr><td>Family Status</td><td>Both spouses present · Widowed · Single parent · Separated or divorced · Remarried</td></tr>
+            <tr><td>Education Level</td><td>Recorded per individual member</td></tr>
+            <tr><td>Contact Details</td><td>Phone number and physical address</td></tr>
+            <tr><td>Registration Date</td><td>Date the household was first entered into the system</td></tr>
+            <tr><td>Record Status</td><td>Active or Deactivated</td></tr>
+          </tbody>
+        </table>
       </section>
 
       <hr class="divider" />
@@ -1233,30 +1215,28 @@
       <section class="section" id="module-2">
         <div class="section-label">Module 2</div>
         <h2>Parish Fund Management</h2>
-        <p class="lead">Every franc that enters the parish — from Sunday collections to wedding fees — will be logged, categorized, and traceable. No more notebooks. Every transaction has a record.</p>
+        <p class="lead">The Fund Management module records every financial transaction that passes through the parish — from Sunday Mass offerings to special occasion fees. Every entry is categorized, dated, and permanently stored. Paper collection notebooks are fully replaced by a searchable, auditable digital ledger.</p>
 
-        <div class="two-col">
-          <div class="col-block">
-            <h4><i class="fa-solid fa-church" style="color:var(--brand)"></i> Regular Collections</h4>
-            <ul>
-              <li>Church offerings collected at Mass</li>
-              <li>Weekly Sunday Mass offerings</li>
-              <li>Subscriptions / membership dues</li>
-              <li>Membership fees</li>
-            </ul>
-          </div>
-          <div class="col-block">
-            <h4><i class="fa-solid fa-star" style="color:var(--brand-light)"></i> Special &amp; One-off Entries</h4>
-            <ul>
-              <li>Mass bookings</li>
-              <li>Funeral Mass fees</li>
-              <li>Wedding Mass fees</li>
-              <li>Baptism celebration fees</li>
-              <li>Donations</li>
-              <li>Miscellaneous income</li>
-            </ul>
-          </div>
-        </div>
+        <h3>How It Works</h3>
+        <p>When any financial collection takes place — whether at a Sunday Mass, a wedding, or a special fundraising event — a parish staff member records the entry in the system. Each entry is assigned to one of the defined collection categories, given an amount, a date, and the name of whoever collected it. The system builds a running ledger that can be searched and filtered at any time. Totals per category, per date range, or per zone can be generated without any manual addition.</p>
+        <p>For digital payments through MOMO or bank (see Module 8 — Integrations), the payment is automatically recorded as a new entry in this module the moment it is confirmed — no manual data entry required.</p>
+
+        <h3>Collection Categories</h3>
+        <table>
+          <thead>
+            <tr><th style="width:35%">Category</th><th>Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>General Church Collection</td><td>General offering collected at Mass</td></tr>
+            <tr><td>Mass Offering</td><td>Offering given specifically at Mass celebrations</td></tr>
+            <tr><td>Alms / Tithe</td><td>Tithing and charitable giving contributions</td></tr>
+            <tr><td>Mass Intention Bookings</td><td>Fees for booking a Mass for a special intention (a person's name, anniversary, etc.)</td></tr>
+            <tr><td>Special Occasion Fees</td><td>Collections tied to specific life events: funerals, weddings, baptism celebrations, and other sacrament occasions</td></tr>
+            <tr><td>Subscriptions &amp; Membership Dues</td><td>Regular contributions from registered parishioners and group members</td></tr>
+            <tr><td>Donations</td><td>One-time or recurring gifts to the parish from individuals or organizations</td></tr>
+            <tr><td>Miscellaneous</td><td>Any other financial collection not covered by the above categories</td></tr>
+          </tbody>
+        </table>
       </section>
 
       <hr class="divider" />
@@ -1267,40 +1247,26 @@
       <section class="section" id="module-3">
         <div class="section-label">Module 3</div>
         <h2>Publications</h2>
-        <p class="lead">A central place to upload and distribute all official parish documents — from Sunday announcements to the annual strategic plan. Everything findable in one place.</p>
+        <p class="lead">The Publications module is the parish's internal and public document management system. All official communication — whether a Sunday notice, a committee report, or a multi-year strategic plan — is uploaded, stored, and made accessible here.</p>
 
-        <div class="cards" style="grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));">
-          <div class="card">
-            <div class="card-icon"><i class="fa-solid fa-bullhorn"></i></div>
-            <h4>Announcements</h4>
-            <p>Notices, alerts, and weekly bulletins.</p>
-          </div>
-          <div class="card">
-            <div class="card-icon"><i class="fa-solid fa-file-lines"></i></div>
-            <h4>Reports</h4>
-            <p>Quarterly commission reports, annual meeting reports, and academic year summaries.</p>
-          </div>
-          <div class="card">
-            <div class="card-icon"><i class="fa-solid fa-compass-drafting"></i></div>
-            <h4>Strategic Plan</h4>
-            <p>The parish's long-term strategic plan document.</p>
-          </div>
-          <div class="card">
-            <div class="card-icon"><i class="fa-solid fa-list-check"></i></div>
-            <h4>Action Plans</h4>
-            <p>Annual action plans per commission and the overall parish plan d'action.</p>
-          </div>
-          <div class="card">
-            <div class="card-icon"><i class="fa-solid fa-calendar-days"></i></div>
-            <h4>Upcoming Events</h4>
-            <p>Advance calendar of all planned events and celebrations.</p>
-          </div>
-          <div class="card">
-            <div class="card-icon"><i class="fa-solid fa-calendar-week"></i></div>
-            <h4>Parish Schedule</h4>
-            <p>The running weekly and monthly schedule of parish activities.</p>
-          </div>
-        </div>
+        <h3>How It Works</h3>
+        <p>An authorized staff member or committee secretary logs into the system and uploads a document or types an announcement directly. Every item is given a content type, a date, and an author. The system organizes content by type so that parishioners and staff can quickly find what they are looking for — all announcements in one place, all reports in another, all action plans together. Nothing gets lost in a pile of paper or a shared folder with no structure.</p>
+        <p>Published content is visible on the parish's public website (Module 6) depending on whether the staff member marks it as public or internal-only. Internal documents such as committee reports and financial plans remain accessible only to authorized users within the system.</p>
+
+        <h3>Content Types</h3>
+        <table>
+          <thead>
+            <tr><th style="width:30%">Type</th><th>What It Contains</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Announcements &amp; Notices</td><td>Sunday bulletins, general notices, urgent alerts — anything the parish needs to communicate to its members quickly</td></tr>
+            <tr><td>Committee Reports</td><td>Quarterly reports from each commission, minutes of general meetings, and annual summaries</td></tr>
+            <tr><td>Strategic Plan</td><td>The parish's long-term strategic planning document</td></tr>
+            <tr><td>Annual Action Plans</td><td>The yearly plan of activities — one per commission and one combined parish-wide plan</td></tr>
+            <tr><td>Upcoming Events</td><td>Calendar of all planned events, celebrations, and scheduled activities for the coming weeks and months</td></tr>
+            <tr><td>Parish Programme</td><td>The regular weekly and monthly schedule of Mass times, meetings, and activities</td></tr>
+          </tbody>
+        </table>
       </section>
 
       <hr class="divider" />
@@ -1311,32 +1277,31 @@
       <section class="section" id="module-4">
         <div class="section-label">Module 4</div>
         <h2>Parish Group Management</h2>
-        <p class="lead">All parish groups — from the main council to youth clubs and Catholic Action families — will be registered in the system with their full membership rosters and leadership positions always current.</p>
+        <p class="lead">The Group Management module keeps a live, accurate record of every formal group operating within the parish — who belongs to each group, what role they hold, and how leadership is currently structured. There is no longer a risk of outdated rosters or unrecorded changes.</p>
 
-        <h3>Groups to Register</h3>
-        <div class="two-col">
-          <div class="col-block">
-            <h4><i class="fa-solid fa-people-group" style="color:var(--brand)"></i> Leadership &amp; Governance</h4>
-            <ul>
-              <li>Priests</li>
-              <li>Parish Council</li>
-              <li>Finance Committee</li>
-              <li>Commissions</li>
-            </ul>
-          </div>
-          <div class="col-block">
-            <h4><i class="fa-solid fa-users" style="color:var(--brand-light)"></i> Community Groups</h4>
-            <ul>
-              <li>Chapel Zone Groups</li>
-              <li>Youth Groups</li>
-              <li>Family Cluster Groups</li>
-              <li>Catholic Action Families</li>
-            </ul>
-          </div>
-        </div>
+        <h3>How It Works</h3>
+        <p>Each group in the parish is created as a record in the system with a name and a group type. Once the group exists, members are added from the existing household database — meaning the system links directly to the person's household record rather than creating a separate entry for them. Every member is given a role within that group at the time they are added. When a person takes on a new position or leaves a group, the roster is updated immediately. The system always reflects current membership — not what was true six months ago.</p>
+        <p>Because members are linked from household records, the system can cross-reference a person's group involvement from their household profile, and can show a group's full member list from the group's own page. No duplication of data.</p>
 
-        <h3>What Is Captured Per Member</h3>
-        <p>For every member of every group: <strong>Full name</strong> · <strong>Personal identification details</strong> · <strong>Position / Role in the group</strong> (President, Secretary, Treasurer, Member, etc.)</p>
+        <h3>Groups Registered in the System</h3>
+        <table>
+          <thead>
+            <tr><th style="width:35%">Group</th><th>Type</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Priests</td><td>Clergy</td></tr>
+            <tr><td>Parish General Council</td><td>Leadership &amp; Governance</td></tr>
+            <tr><td>Finance &amp; Development Committee</td><td>Leadership &amp; Governance</td></tr>
+            <tr><td>Commissions</td><td>Leadership &amp; Governance</td></tr>
+            <tr><td>Chapel Zone Groups</td><td>Geographic / Community</td></tr>
+            <tr><td>Sub-Zone Groupings</td><td>Geographic / Community</td></tr>
+            <tr><td>Family Cluster Groups</td><td>Geographic / Community</td></tr>
+            <tr><td>Catholic Action Groups</td><td>Apostolic / Lay Ministry</td></tr>
+          </tbody>
+        </table>
+
+        <h3>Data Stored Per Group Member</h3>
+        <p>For every person in every group, the system records: their <strong>full name</strong> (linked from their household record), their <strong>personal identification details</strong>, and their <strong>role within the group</strong> — such as President, Vice President, Secretary, Treasurer, or Member.</p>
       </section>
 
       <hr class="divider" />
@@ -1347,8 +1312,13 @@
       <section class="section" id="module-5">
         <div class="section-label">Module 5</div>
         <h2>Sacrament Management</h2>
-        <p class="lead">Every Catholic sacrament will be tracked per person. Each of the 6 sacraments has its own registration workflow, with different class and exam requirements depending on the sacrament and the age of the recipient.</p>
+        <p class="lead">The Sacrament Management module creates a permanent, searchable record of every sacrament received by every person in the parish. All 6 Catholic sacraments are tracked here, each with its own set of required data and its own rules about preparation classes and examinations.</p>
 
+        <h3>How It Works</h3>
+        <p>When a person is preparing to receive a sacrament, a staff member opens their record and creates a new sacrament entry. The system presents the correct input form based on which sacrament is being recorded — each sacrament collects different information, and the system enforces this automatically. For sacraments that require a preparation class (such as First Communion or Confirmation), the system records the teacher, the school or location, and the start and end dates of the class, as well as whether the person sat and passed the exam. For sacraments that do not require preparation (such as Anointing of the Sick), those fields are not shown.</p>
+        <p>Staff can search for any person and immediately see every sacrament they have received, when it was administered, and who the teacher or officiant was. The system does not allow the same sacrament to be recorded twice for the same person, preventing duplicate entries.</p>
+
+        <h3>Sacrament Requirements by Type and Age</h3>
         <table>
           <thead>
             <tr>
@@ -1433,11 +1403,11 @@
       <section class="section" id="module-6">
         <div class="section-label">Module 6</div>
         <h2>Parish Website</h2>
-        <p class="lead">A public-facing website for Saint Joseph Gahanga Parish — accessible to all parishioners and the wider community online. Detailed website specification to be provided by Mr. KARANGWA Joseph before the second meeting.</p>
+        <p class="lead">The Parish Website module is the public face of Saint Joseph Gahanga Parish on the internet. Anyone — parishioners, visitors, or people looking to join the parish — can access it without needing a login or account.</p>
 
-        <div class="blockquote">
-          <p>"The website will be the public face of the parish — for those who want information, announcements, and contact details without needing to visit in person."</p>
-        </div>
+        <h3>How It Works</h3>
+        <p>The website is managed entirely from within the same administration dashboard used for all other modules. There is no separate content management system to log into. When a staff member publishes an announcement in Module 3 (Publications) and marks it as public, it automatically appears on the parish website. The same applies to upcoming events and the parish programme schedule. This means the website always reflects the latest information posted by staff — there is no need to update two separate systems.</p>
+        <p>The website displays: parish identity and history, contact details and location, Mass times and the weekly schedule, current announcements, upcoming events, and the parish's published programme. The full detailed specification for the website's design, pages, and features will be submitted by Mr. KARANGWA Joseph as a separate requirements document.</p>
       </section>
 
       <hr class="divider" />
@@ -1448,31 +1418,31 @@
       <section class="section" id="module-7">
         <div class="section-label">Module 7</div>
         <h2>Reports &amp; Dashboard</h2>
-        <p class="lead">Parish leadership will have access to a real-time dashboard that shows the total number of Christians and a full breakdown across every relevant dimension — in one click, not days of counting.</p>
+        <p class="lead">The Reports and Dashboard module gives parish leadership an instant, accurate view of the state of the parish — total Christians, every demographic breakdown, and financial summaries — without any manual counting or spreadsheet work.</p>
 
-        <h3>Dashboard Dimensions</h3>
-        <div class="scope-grid">
-          <div class="scope-in">
-            <h4><i class="fa-solid fa-check"></i> Included in Phase 1</h4>
-            <ul>
-              <li><i class="fa-solid fa-circle-dot"></i>Total Christians — whole parish</li>
-              <li><i class="fa-solid fa-circle-dot"></i>Breakdown: Women / Men / Children / Youth</li>
-              <li><i class="fa-solid fa-circle-dot"></i>By sacrament received: Baptized, Communion, Confirmed, Married, Anointed, Ordained</li>
-              <li><i class="fa-solid fa-circle-dot"></i>By family status: two-parent, widows, single parents, separated, remarried</li>
-              <li><i class="fa-solid fa-circle-dot"></i>By education level</li>
-              <li><i class="fa-solid fa-circle-dot"></i>Per chapel zone, per commission, whole-parish aggregate</li>
-            </ul>
-          </div>
-          <div class="scope-out">
-            <h4><i class="fa-solid fa-clock"></i> Later Phases</h4>
-            <ul>
-              <li><i class="fa-solid fa-circle"></i>Historical trend charts (year-over-year growth)</li>
-              <li><i class="fa-solid fa-circle"></i>Diocese-level consolidated reporting</li>
-              <li><i class="fa-solid fa-circle"></i>Predictive analytics</li>
-              <li><i class="fa-solid fa-circle"></i>Automated report scheduling (email delivery)</li>
-            </ul>
-          </div>
-        </div>
+        <h3>How It Works</h3>
+        <p>The dashboard reads directly from the household and sacrament records stored in the system and calculates totals in real time. Parish leadership open the dashboard and immediately see the current total number of Christians registered across the whole parish. From there, they can apply filters to break the data down by any combination of the dimensions below. All data is live — when a new household is registered or a sacrament is recorded, the dashboard reflects it immediately. Reports can be exported and printed for submission to the diocese or for committee meetings.</p>
+        <p>The dashboard is filterable by Chapel Zone, by commission, or at the whole-parish level — so zone leaders can see figures for their area, and the Parish Priest can see the full picture.</p>
+
+        <h3>Dashboard Breakdown Dimensions</h3>
+        <table>
+          <thead>
+            <tr><th style="width:30%">Dimension</th><th>Categories</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Gender &amp; Age Group</td><td>Women · Men · Children · Youth</td></tr>
+            <tr>
+              <td>Sacrament Status</td>
+              <td>Baptized · Received First Communion · Confirmed · Married · Anointed of the Sick · Ordained (Holy Orders)</td>
+            </tr>
+            <tr>
+              <td>Family / Marital Status</td>
+              <td>Both spouses living together · Widowed · Single parents · Separated or divorced · Remarried</td>
+            </tr>
+            <tr><td>Education Level</td><td>Per the education categories recorded on household profiles</td></tr>
+            <tr><td>Geographic Filter</td><td>Per Chapel Zone · Per Commission · Whole parish aggregate</td></tr>
+          </tbody>
+        </table>
       </section>
 
       <hr class="divider" />
@@ -1483,42 +1453,45 @@
       <section class="section" id="module-8">
         <div class="section-label">Module 8</div>
         <h2>Integrations</h2>
-        <p class="lead">The system will connect to external platforms to enable digital payments, mass notifications, government data exchange, and social media publishing — all from within the parish management dashboard.</p>
+        <p class="lead">The Integrations module connects the parish management system to the external services that the parish already uses or needs to use — digital payments, text messaging, government systems, and social media. All of these connections are managed from within the same dashboard, not from separate apps.</p>
+
+        <h3>How It Works</h3>
+        <p>Each integration is a two-way or one-way connection between the parish system and an external platform. Once configured, staff do not need to open a separate app or website to use these services — the action happens from within the parish system itself.</p>
 
         <div class="int-grid">
           <div class="int-card">
             <div class="int-icon"><i class="fa-solid fa-comment-sms"></i></div>
             <div>
               <div class="int-title">SMS Gateway</div>
-              <div class="int-desc">Send text message alerts and announcements directly to parishioners' phones from within the system. No third-party app required.</div>
+              <div class="int-desc">Staff compose a message in the dashboard and select the recipients — an individual household, a group, a chapel zone, or the entire parish. The system sends the text message directly to each person's registered phone number. No phone app required. Used for announcements, event reminders, and urgent communications.</div>
             </div>
           </div>
           <div class="int-card">
             <div class="int-icon"><i class="fa-solid fa-money-bill-wave"></i></div>
             <div>
-              <div class="int-title">Digital Payments</div>
-              <div class="int-desc">Parishioners can pay offerings, booking fees, and subscriptions digitally via MTN Mobile Money (MOMO) or bank transfer.</div>
+              <div class="int-title">Digital Payments — MTN MOMO &amp; Bank Transfer</div>
+              <div class="int-desc">Parishioners pay offerings, Mass booking fees, subscriptions, and other dues digitally using MTN Mobile Money or a bank transfer. When a payment is confirmed, the system automatically creates the corresponding entry in the Fund Management module (Module 2) — no manual data entry needed. The parish receives the payment and the record is created in one transaction.</div>
             </div>
           </div>
           <div class="int-card">
             <div class="int-icon"><i class="fa-solid fa-landmark"></i></div>
             <div>
-              <div class="int-title">Local Government</div>
-              <div class="int-desc">Integration with Rwandan local government and citizen-data systems for cross-verification and official reporting.</div>
+              <div class="int-title">Local Government Systems</div>
+              <div class="int-desc">The system can exchange data with Rwandan local government and citizen-record systems. This allows the parish to cross-verify household and identity information against official records and to submit required reports to government agencies directly from the system.</div>
             </div>
           </div>
           <div class="int-card">
             <div class="int-icon"><i class="fa-solid fa-cross"></i></div>
             <div>
-              <div class="int-title">Other Denominations</div>
-              <div class="int-desc">Data cooperation and exchange with other recognized religious organizations in Rwanda.</div>
+              <div class="int-title">Other Religious Organizations</div>
+              <div class="int-desc">The system supports data sharing and cooperation with other recognized churches and religious bodies in Rwanda — for example, verifying sacrament records when a parishioner transfers from another parish.</div>
             </div>
           </div>
           <div class="int-card" style="grid-column:1/-1;">
             <div class="int-icon"><i class="fa-solid fa-share-nodes"></i></div>
             <div>
               <div class="int-title">Social Media — X (Twitter) · WhatsApp · Facebook</div>
-              <div class="int-desc">Parish administrators can publish announcements and events directly to all social platforms from within the system dashboard — no separate logins or copy-pasting needed.</div>
+              <div class="int-desc">When a staff member publishes an announcement or event in Module 3, they can choose to simultaneously share it to the parish's X, WhatsApp, and Facebook accounts — all from within the dashboard. The content is posted automatically without the staff member needing to open those platforms separately or copy and paste the text. This keeps all parish social media channels current with no extra effort.</div>
             </div>
           </div>
         </div>

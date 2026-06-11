@@ -123,6 +123,37 @@
     .module-block ul li:last-child { border-bottom: none; }
     .module-block ul li i { color: var(--brand-light); flex-shrink: 0; margin-top: 4px; font-size: 12px; }
 
+    /* ── Integration grid ── */
+    .int-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
+
+    .int-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 20px 22px;
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      box-shadow: var(--shadow);
+      transition: transform 0.15s;
+    }
+    .int-card:hover { transform: translateY(-2px); }
+
+    .int-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: var(--brand-pale);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .int-icon i { font-size: 20px; color: var(--brand); }
+    .int-title { font-size: 15px; font-weight: 700; color: var(--brand-dark); }
+    .int-desc  { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
+
     /* ── Sig grid ── */
     .sig-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; margin-top: 28px; }
     .sig-block { text-align: center; }
@@ -156,7 +187,7 @@
       .footer { padding: 20px; flex-direction: column; gap: 12px; text-align: center; }
     }
     @media (max-width: 600px) {
-      .two-col, .sig-grid { grid-template-columns: 1fr; }
+      .two-col, .sig-grid, .int-grid { grid-template-columns: 1fr; }
       .cards { grid-template-columns: 1fr; }
       .hero h1 { font-size: 22px; }
       .hero-stat .number { font-size: 22px; }
@@ -222,16 +253,8 @@
       </div>
 
       <div class="nav-section">
-        <div class="nav-section-label">Modules Discussed</div>
-        <a href="#modules-overview" class="nav-link"><span class="icon"><i class="fa-solid fa-grid-2"></i></span> All 8 Modules</a>
-        <a href="#module-1"  class="nav-link"><span class="icon"><i class="fa-solid fa-cross"></i></span> 1 · Christian Mgmt</a>
-        <a href="#module-2"  class="nav-link"><span class="icon"><i class="fa-solid fa-coins"></i></span> 2 · Fund Mgmt</a>
-        <a href="#module-3"  class="nav-link"><span class="icon"><i class="fa-solid fa-newspaper"></i></span> 3 · Publications</a>
-        <a href="#module-4"  class="nav-link"><span class="icon"><i class="fa-solid fa-people-group"></i></span> 4 · Group Mgmt</a>
-        <a href="#module-5"  class="nav-link"><span class="icon"><i class="fa-solid fa-hands-praying"></i></span> 5 · Sacraments</a>
-        <a href="#module-6"  class="nav-link"><span class="icon"><i class="fa-solid fa-globe"></i></span> 6 · Website</a>
-        <a href="#module-7"  class="nav-link"><span class="icon"><i class="fa-solid fa-chart-bar"></i></span> 7 · Reports</a>
-        <a href="#module-8"  class="nav-link"><span class="icon"><i class="fa-solid fa-plug"></i></span> 8 · Integrations</a>
+        <div class="nav-section-label">Requirements</div>
+        <a href="#data-requirements" class="nav-link"><span class="icon"><i class="fa-solid fa-table-list"></i></span> Data Requirements</a>
       </div>
 
       <div class="nav-section">
@@ -262,7 +285,7 @@
       <div class="hero-stats">
         <div class="hero-stat">
           <div class="number">8</div>
-          <div class="label">Modules Agreed</div>
+          <div class="label">Data Specs Agreed</div>
         </div>
         <div class="hero-stat">
           <div class="number">6</div>
@@ -343,333 +366,241 @@
 
       <hr class="divider" />
 
-      <!-- ══════════ MODULES OVERVIEW ══════════ -->
-      <section class="section" id="modules-overview">
-        <div class="section-label">Software Data Requirements</div>
-        <h2>All 8 Modules</h2>
-        <p class="lead">The following 8 modules were reviewed at this meeting. For each module, the committee agreed on exactly what data the software must capture and what actions it must support.</p>
+      <!-- ══════════ DATA REQUIREMENTS ══════════ -->
+      <section class="section" id="data-requirements">
+        <div class="section-label">ICT Committee — October 12, 2024</div>
+        <h2>Data Requirements by Module</h2>
+        <p class="lead">The committee reviewed and agreed on the exact data the software must capture for all 8 modules. The tables below record what was confirmed at this meeting. For the full description of how each module works, see the First Meeting documentation.</p>
 
-        <div class="cards">
-          <div class="card">
-            <div class="mod-num">Module 1</div>
-            <h4>Christian Management</h4>
-            <p>Registration, editing, updating, transferring, viewing, and deactivating household records.</p>
-          </div>
-          <div class="card">
-            <div class="mod-num">Module 2</div>
-            <h4>Fund Management</h4>
-            <p>All categories of parish financial collections — Mass offerings, subscriptions, donations, and more.</p>
-          </div>
-          <div class="card">
-            <div class="mod-num">Module 3</div>
-            <h4>Publications</h4>
-            <p>Announcements, committee reports, strategic plans, action plans, and upcoming events.</p>
-          </div>
-          <div class="card">
-            <div class="mod-num">Module 4</div>
-            <h4>Group Management</h4>
-            <p>Creating and managing all parish groups — priests, committees, chapel zones, and Catholic Action.</p>
-          </div>
-          <div class="card">
-            <div class="mod-num">Module 5</div>
-            <h4>Sacrament Management</h4>
-            <p>Tracking all 6 sacraments per person — with class attendance and exam records where applicable.</p>
-          </div>
-          <div class="card">
-            <div class="mod-num">Module 6</div>
-            <h4>Parish Website</h4>
-            <p>Public-facing website for the parish. Requirements to be provided by Mr. KARANGWA Joseph.</p>
-          </div>
-          <div class="card">
-            <div class="mod-num">Module 7</div>
-            <h4>Statistical Reports</h4>
-            <p>Dashboard showing totals and breakdowns — by gender, sacrament, marital status, education level.</p>
-          </div>
-          <div class="card">
-            <div class="mod-num">Module 8</div>
-            <h4>Integrations</h4>
-            <p>SMS gateway, digital payments (MOMO/bank), local government, other churches, social media.</p>
-          </div>
-        </div>
-      </section>
-
-      <hr class="divider" />
-
-      <!-- ══════════ MODULE 1 ══════════ -->
-      <section class="section" id="module-1">
-        <div class="section-label">Module 1</div>
-        <h2>Christian Management</h2>
-        <p class="lead">This module manages all household records. The data entry form is based on the existing paper household registration form.</p>
-
-        <div class="module-block">
+        <!-- M1 -->
+        <div class="module-block" style="margin-top:28px;">
           <div class="mod-header">
-            <div class="mod-icon"><i class="fa-solid fa-cross"></i></div>
+            <div class="mod-icon"><i class="fa-solid fa-users"></i></div>
             <div>
-              <div class="mod-label">Module 1 · Use Cases</div>
-              <div class="mod-title">Actions the software must support</div>
+              <div class="mod-label">Module 1</div>
+              <div class="mod-title">Christian Management — Household Record Fields</div>
             </div>
           </div>
-          <ul>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>Registration</strong> — Record a new household using the existing household registration form</li>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>Edit Urugo</strong> — Correct or change existing household information</li>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>Update Urugo</strong> — Update household records when family changes occur</li>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>Transfer Household</strong> — Move a household from one chapel zone to another</li>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>View Urugo Details</strong> — View the full record of any household</li>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>Deactivate</strong> — Mark a household as inactive (e.g., family has left the parish)</li>
-          </ul>
+          <table>
+            <thead><tr><th style="width:30%">Field</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td>Household Head</td><td>Full name of the head of the household</td></tr>
+              <tr><td>Hierarchy Position</td><td>Chapel Zone, Family Group Cluster, and Family Cluster this household belongs to</td></tr>
+              <tr><td>Members</td><td>Each individual: name, date of birth, gender, relationship to household head</td></tr>
+              <tr><td>Family Status</td><td>Both spouses present · Widowed · Single parent · Separated or divorced · Remarried</td></tr>
+              <tr><td>Education Level</td><td>Recorded per individual member</td></tr>
+              <tr><td>Contact Details</td><td>Phone number and physical address</td></tr>
+            </tbody>
+          </table>
         </div>
-      </section>
 
-      <hr class="divider" />
-
-      <!-- ══════════ MODULE 2 ══════════ -->
-      <section class="section" id="module-2">
-        <div class="section-label">Module 2</div>
-        <h2>Fund Management</h2>
-        <p class="lead">This module tracks all money collected by the parish. The following categories of collection were agreed upon at this meeting.</p>
-
+        <!-- M2 -->
         <div class="module-block">
           <div class="mod-header">
             <div class="mod-icon" style="background:var(--brand-light);"><i class="fa-solid fa-coins"></i></div>
             <div>
-              <div class="mod-label">Module 2 · Collection Categories</div>
-              <div class="mod-title">Types of parish financial collection to be tracked</div>
+              <div class="mod-label">Module 2</div>
+              <div class="mod-title">Fund Management — Collection Categories</div>
             </div>
           </div>
-          <ul>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>General Church Collection</strong> — General offering collected at Mass</li>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>Mass Offering</strong> — Offering given at Mass</li>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>Amasekuru</strong> — Alms / tithe collection</li>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>Mass Intention Requests</strong> — Booking a Mass for a special intention</li>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>Special Celebrations</strong> — Collections for special occasions: funeral (uwitabye Imana), wedding (uwashyingiwe), baptism (uwabatirishije), and others</li>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>Subscriptions / Membership Contributions</strong></li>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>Donations</strong> — Gifts and donations to the parish</li>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>Miscellaneous</strong> — Any other financial collection not listed above</li>
-          </ul>
+          <table>
+            <thead><tr><th style="width:35%">Category</th><th>Description</th></tr></thead>
+            <tbody>
+              <tr><td>General Church Collection</td><td>General offering collected at Mass</td></tr>
+              <tr><td>Mass Offering</td><td>Offering given specifically at Mass celebrations</td></tr>
+              <tr><td>Alms / Tithe</td><td>Tithing and charitable giving contributions</td></tr>
+              <tr><td>Mass Intention Bookings</td><td>Fees for booking a Mass for a special intention</td></tr>
+              <tr><td>Special Occasion Fees</td><td>Collections tied to life events: funerals, weddings, baptism celebrations, and other occasions</td></tr>
+              <tr><td>Subscriptions &amp; Membership Dues</td><td>Regular contributions from registered parishioners and group members</td></tr>
+              <tr><td>Donations</td><td>One-time or recurring gifts to the parish</td></tr>
+              <tr><td>Miscellaneous</td><td>Any other financial collection not covered by the above categories</td></tr>
+            </tbody>
+          </table>
         </div>
-      </section>
 
-      <hr class="divider" />
-
-      <!-- ══════════ MODULE 3 ══════════ -->
-      <section class="section" id="module-3">
-        <div class="section-label">Module 3</div>
-        <h2>Publications</h2>
-        <p class="lead">This module handles all documents and announcements that the parish publishes or communicates internally and publicly.</p>
-
+        <!-- M3 -->
         <div class="module-block">
           <div class="mod-header">
             <div class="mod-icon"><i class="fa-solid fa-newspaper"></i></div>
             <div>
-              <div class="mod-label">Module 3 · Content Types</div>
-              <div class="mod-title">What can be uploaded or published through the software</div>
+              <div class="mod-label">Module 3</div>
+              <div class="mod-title">Publications — Content Types</div>
             </div>
           </div>
-          <ul>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>Ibirangwa (Amatangazo)</strong> — Announcements and notices</li>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>Reports (Raporo)</strong> — Quarterly reports of each committee, minutes of general meetings, annual reports</li>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>Igenamigambi ry'Icyerekezo</strong> — Strategic plan (Plan stratégique)</li>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>Gahunda y'Ibikorwa by'Umwaka</strong> — Annual action plan (Plan d'action) — both per committee and for the whole parish</li>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>Upcoming Events (Gahunda ziteganyijwe)</strong> — Future scheduled activities and events</li>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>Parish Programme</strong> — The general weekly and monthly parish schedule</li>
-          </ul>
+          <table>
+            <thead><tr><th style="width:30%">Type</th><th>What It Contains</th></tr></thead>
+            <tbody>
+              <tr><td>Announcements &amp; Notices</td><td>Sunday bulletins, general notices, urgent alerts for parishioners</td></tr>
+              <tr><td>Committee Reports</td><td>Quarterly reports from each commission, meeting minutes, and annual summaries</td></tr>
+              <tr><td>Strategic Plan</td><td>The parish's long-term strategic planning document</td></tr>
+              <tr><td>Annual Action Plans</td><td>Yearly plan of activities — one per commission and one combined parish-wide plan</td></tr>
+              <tr><td>Upcoming Events</td><td>Calendar of planned events, celebrations, and activities</td></tr>
+              <tr><td>Parish Programme</td><td>The regular weekly and monthly schedule of Mass times, meetings, and activities</td></tr>
+            </tbody>
+          </table>
         </div>
-      </section>
 
-      <hr class="divider" />
-
-      <!-- ══════════ MODULE 4 ══════════ -->
-      <section class="section" id="module-4">
-        <div class="section-label">Module 4</div>
-        <h2>Parish Group Management</h2>
-        <p class="lead">This module manages all groups and organizations within the parish. It covers creating groups, recording members, and tracking each member's role.</p>
-
-        <div class="two-col">
-          <div class="col-block">
-            <h4><i class="fa-solid fa-layer-group" style="color:var(--brand);"></i> Groups to be Created</h4>
-            <ul>
-              <li>Abasaseridoti — Priests</li>
-              <li>Inama nkuru — General Council</li>
-              <li>Ncungamutungo / Iterambere — Finance &amp; Development Committee</li>
-              <li>Komisiyo — Commissions</li>
-              <li>Chapel Zones</li>
-              <li>Impuza — Sub-zone groupings</li>
-              <li>Family Cluster Groups</li>
-              <li>Catholic Action Groups</li>
-            </ul>
+        <!-- M4 -->
+        <div class="module-block">
+          <div class="mod-header">
+            <div class="mod-icon"><i class="fa-solid fa-people-group"></i></div>
+            <div>
+              <div class="mod-label">Module 4</div>
+              <div class="mod-title">Group Management — Groups &amp; Member Data</div>
+            </div>
           </div>
-          <div class="col-block">
-            <h4><i class="fa-solid fa-user-plus" style="color:var(--brand-light);"></i> Member Data to Capture</h4>
-            <ul>
-              <li>Name (Izina)</li>
-              <li>Personal details (Amakuru bwite)</li>
-              <li>Position / Role within the group</li>
-            </ul>
+          <table>
+            <thead><tr><th style="width:50%">Group</th><th>Type</th></tr></thead>
+            <tbody>
+              <tr><td>Priests</td><td>Clergy</td></tr>
+              <tr><td>Parish General Council</td><td>Leadership &amp; Governance</td></tr>
+              <tr><td>Finance &amp; Development Committee</td><td>Leadership &amp; Governance</td></tr>
+              <tr><td>Commissions</td><td>Leadership &amp; Governance</td></tr>
+              <tr><td>Chapel Zone Groups</td><td>Geographic / Community</td></tr>
+              <tr><td>Sub-Zone Groupings</td><td>Geographic / Community</td></tr>
+              <tr><td>Family Cluster Groups</td><td>Geographic / Community</td></tr>
+              <tr><td>Catholic Action Groups</td><td>Apostolic / Lay Ministry</td></tr>
+            </tbody>
+          </table>
+          <p style="margin-top:14px;font-size:13.5px;color:var(--text-muted);">Per member: <strong>full name</strong> · <strong>personal identification details</strong> · <strong>role in the group</strong> (President, Secretary, Treasurer, Member, etc.)</p>
+        </div>
+
+        <!-- M5 -->
+        <div class="module-block">
+          <div class="mod-header">
+            <div class="mod-icon"><i class="fa-solid fa-hands-praying"></i></div>
+            <div>
+              <div class="mod-label">Module 5</div>
+              <div class="mod-title">Sacrament Management — Requirements by Type &amp; Age</div>
+            </div>
           </div>
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Sacrament</th>
+                <th>Registration Data Required</th>
+                <th>Class</th>
+                <th>Exam</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1a</td>
+                <td><strong>Baptism</strong><br><small style="font-weight:400;color:var(--text-muted);">0 – 6 months</small></td>
+                <td>Registration form (Fiche) only</td>
+                <td><span class="tag tag-na">N/A</span></td>
+                <td><span class="tag tag-na">N/A</span></td>
+              </tr>
+              <tr>
+                <td>1b</td>
+                <td><strong>Baptism</strong><br><small style="font-weight:400;color:var(--text-muted);">7 months – 6 years</small></td>
+                <td>Registration form (Fiche)</td>
+                <td><span class="tag tag-orange">4 weeks</span></td>
+                <td><span class="tag tag-na">N/A</span></td>
+              </tr>
+              <tr>
+                <td>1c</td>
+                <td><strong>Baptism</strong><br><small style="font-weight:400;color:var(--text-muted);">7 years and above</small></td>
+                <td>Identification · Teacher name · School/place of study · Class start &amp; end dates</td>
+                <td><span class="tag tag-green">Yes</span></td>
+                <td><span class="tag tag-green">Yes</span></td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td><strong>First Communion / Eucharist</strong></td>
+                <td>Registration form (Fiche)</td>
+                <td><span class="tag tag-green">Yes</span></td>
+                <td><span class="tag tag-green">Yes</span></td>
+              </tr>
+              <tr>
+                <td>3</td>
+                <td><strong>Confirmation</strong></td>
+                <td>Registration form (Fiche)</td>
+                <td><span class="tag tag-green">Yes</span></td>
+                <td><span class="tag tag-green">Yes</span></td>
+              </tr>
+              <tr>
+                <td>4</td>
+                <td><strong>Marriage</strong></td>
+                <td>Identification · Teacher name · School/place of study · Class start &amp; end dates</td>
+                <td><span class="tag tag-green">Yes</span></td>
+                <td><span class="tag tag-green">Yes</span></td>
+              </tr>
+              <tr>
+                <td>5</td>
+                <td><strong>Anointing of the Sick</strong></td>
+                <td>Patient identification · Priest identification · Date administered</td>
+                <td><span class="tag tag-na">N/A</span></td>
+                <td><span class="tag tag-na">N/A</span></td>
+              </tr>
+              <tr>
+                <td>6</td>
+                <td><strong>Holy Orders / Ordination</strong></td>
+                <td>Priest identification · Seminary / school attended · Date of ordination · Religious order / congregation</td>
+                <td><span class="tag tag-na">N/A</span></td>
+                <td><span class="tag tag-na">N/A</span></td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-      </section>
 
-      <hr class="divider" />
-
-      <!-- ══════════ MODULE 5 ══════════ -->
-      <section class="section" id="module-5">
-        <div class="section-label">Module 5</div>
-        <h2>Sacrament Management</h2>
-        <p class="lead">This module tracks all 6 Catholic sacraments for every person in the parish. The data requirements differ by sacrament and by the age of the person receiving it.</p>
-
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Sacrament</th>
-              <th>Registration Data Required</th>
-              <th>Class Required</th>
-              <th>Exam Required</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1a</td>
-              <td><strong>Baptism</strong><br><small style="font-weight:400;color:var(--text-muted);">Children 0 – 6 months</small></td>
-              <td>Registration form (Fiche) only</td>
-              <td><span class="tag tag-na">N/A</span></td>
-              <td><span class="tag tag-na">N/A</span></td>
-            </tr>
-            <tr>
-              <td>1b</td>
-              <td><strong>Baptism</strong><br><small style="font-weight:400;color:var(--text-muted);">Children 7 months – 6 years</small></td>
-              <td>Registration form (Fiche)</td>
-              <td><span class="tag tag-orange">4 weeks</span></td>
-              <td><span class="tag tag-na">N/A</span></td>
-            </tr>
-            <tr>
-              <td>1c</td>
-              <td><strong>Baptism</strong><br><small style="font-weight:400;color:var(--text-muted);">Adults — 7 years and above</small></td>
-              <td>1. Identification &nbsp; 2. Teacher name &nbsp; 3. School/place of study &nbsp; 4. Start &amp; end dates of class</td>
-              <td><span class="tag tag-green">Yes</span></td>
-              <td><span class="tag tag-green">Yes</span></td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td><strong>First Communion / Eucharist</strong></td>
-              <td>Registration form (Fiche)</td>
-              <td><span class="tag tag-green">Yes</span></td>
-              <td><span class="tag tag-green">Yes</span></td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td><strong>Confirmation</strong></td>
-              <td>Registration form (Fiche)</td>
-              <td><span class="tag tag-green">Yes</span></td>
-              <td><span class="tag tag-green">Yes</span></td>
-            </tr>
-            <tr>
-              <td>4</td>
-              <td><strong>Marriage</strong></td>
-              <td>1. Identification &nbsp; 2. Teacher name &nbsp; 3. School/place of study &nbsp; 4. Start &amp; end dates of class</td>
-              <td><span class="tag tag-green">Yes</span></td>
-              <td><span class="tag tag-green">Yes</span></td>
-            </tr>
-            <tr>
-              <td>5</td>
-              <td><strong>Anointing of the Sick</strong></td>
-              <td>1. Patient identification &nbsp; 2. Priest identification &nbsp; 3. Date administered</td>
-              <td><span class="tag tag-na">N/A</span></td>
-              <td><span class="tag tag-na">N/A</span></td>
-            </tr>
-            <tr>
-              <td>6</td>
-              <td><strong>Holy Orders / Ordination</strong></td>
-              <td>1. Priest identification &nbsp; 2. Seminary / school attended &nbsp; 3. Date of ordination &nbsp; 4. Religious order / congregation</td>
-              <td><span class="tag tag-na">N/A</span></td>
-              <td><span class="tag tag-na">N/A</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </section>
-
-      <hr class="divider" />
-
-      <!-- ══════════ MODULE 6 ══════════ -->
-      <section class="section" id="module-6">
-        <div class="section-label">Module 6</div>
-        <h2>Parish Website</h2>
-        <p class="lead">A public-facing website for Saint Joseph Gahanga Parish.</p>
-
-        <div class="blockquote">
-          <p>The detailed requirements for the parish website are to be provided by Mr. KARANGWA Joseph. This item was acknowledged in the meeting and noted for follow-up.</p>
-        </div>
-        <p>No further specification was discussed for this module at this meeting. The full requirements document will be submitted by Mr. KARANGWA Joseph separately.</p>
-      </section>
-
-      <hr class="divider" />
-
-      <!-- ══════════ MODULE 7 ══════════ -->
-      <section class="section" id="module-7">
-        <div class="section-label">Module 7</div>
-        <h2>Statistical Reports &amp; Dashboard</h2>
-        <p class="lead">This module provides a data dashboard showing the total count of Christians in the parish and breakdowns across multiple dimensions.</p>
-
-        <div class="two-col">
-          <div class="col-block">
-            <h4><i class="fa-solid fa-chart-bar" style="color:var(--brand);"></i> Dashboard Breakdowns by Category</h4>
-            <ul>
-              <li>Gender — Female, Male, Children, Youth</li>
-              <li>Sacrament status — which sacraments each person has received</li>
-              <li>Education level</li>
-              <li>Marital status (see right column)</li>
-            </ul>
+        <!-- M6 -->
+        <div class="module-block">
+          <div class="mod-header">
+            <div class="mod-icon"><i class="fa-solid fa-globe"></i></div>
+            <div>
+              <div class="mod-label">Module 6</div>
+              <div class="mod-title">Parish Website — Data Requirements</div>
+            </div>
           </div>
-          <div class="col-block">
-            <h4><i class="fa-solid fa-ring" style="color:var(--brand-light);"></i> Marital Status Categories</h4>
-            <ul>
-              <li>Ababana bombi — Both spouses living together</li>
-              <li>Abapfakazi — Widows / Widowers</li>
-              <li>Ababyariye murugo — Single parents</li>
-              <li>Abatandukanye — Separated / Divorced</li>
-              <li>Abongeye gushaka — Remarried</li>
-            </ul>
+          <p style="font-size:13.5px;color:var(--text-muted);padding:4px 0;">Content sourced automatically from Module 3 (Publications): announcements, upcoming events, and parish programme. Full website specification to be submitted separately by Mr. KARANGWA Joseph.</p>
+        </div>
+
+        <!-- M7 -->
+        <div class="module-block">
+          <div class="mod-header">
+            <div class="mod-icon"><i class="fa-solid fa-chart-bar"></i></div>
+            <div>
+              <div class="mod-label">Module 7</div>
+              <div class="mod-title">Reports &amp; Dashboard — Breakdown Dimensions</div>
+            </div>
           </div>
+          <table>
+            <thead><tr><th style="width:30%">Dimension</th><th>Categories</th></tr></thead>
+            <tbody>
+              <tr><td>Gender &amp; Age Group</td><td>Women · Men · Children · Youth</td></tr>
+              <tr><td>Sacrament Status</td><td>Baptized · First Communion · Confirmed · Married · Anointed of the Sick · Ordained</td></tr>
+              <tr><td>Family / Marital Status</td><td>Both spouses together · Widowed · Single parents · Separated or divorced · Remarried</td></tr>
+              <tr><td>Education Level</td><td>Per the education categories on household profiles</td></tr>
+              <tr><td>Geographic Filter</td><td>Per Chapel Zone · Per Commission · Whole parish</td></tr>
+            </tbody>
+          </table>
         </div>
 
-        <h3>Sacrament Breakdown Dimensions</h3>
-        <p>The dashboard must be able to show counts per sacrament:</p>
-        <div style="display:flex;flex-wrap:wrap;gap:10px;margin-top:14px;">
-          <span class="tag tag-blue">Baptism</span>
-          <span class="tag tag-blue">Eucharist</span>
-          <span class="tag tag-blue">Confirmation</span>
-          <span class="tag tag-blue">Marriage</span>
-          <span class="tag tag-blue">Anointing of the Sick</span>
-          <span class="tag tag-blue">Holy Orders</span>
-        </div>
-      </section>
-
-      <hr class="divider" />
-
-      <!-- ══════════ MODULE 8 ══════════ -->
-      <section class="section" id="module-8">
-        <div class="section-label">Module 8</div>
-        <h2>Integrations</h2>
-        <p class="lead">The software must be able to connect with and exchange data with external systems and platforms.</p>
-
+        <!-- M8 -->
         <div class="module-block">
           <div class="mod-header">
             <div class="mod-icon" style="background:var(--accent-green);"><i class="fa-solid fa-plug"></i></div>
             <div>
-              <div class="mod-label">Module 8 · External Connections</div>
-              <div class="mod-title">Systems the software must integrate with</div>
+              <div class="mod-label">Module 8</div>
+              <div class="mod-title">Integrations — External Systems</div>
             </div>
           </div>
-          <ul>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>SMS Gateway</strong> — Send text messages to parishioners directly from the system</li>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>Digital Payment</strong> — Accept offerings and subscriptions via mobile money (MTN MOMO) and bank</li>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>Local Government (Inzego za Leta)</strong> — Data exchange with Rwanda government agencies</li>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>Other Religious Organizations</strong> — Interoperability with other churches or religious bodies</li>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>X (Twitter)</strong> — Post and share parish content to X</li>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>WhatsApp</strong> — Send parish communications via WhatsApp</li>
-            <li><i class="fa-solid fa-circle-dot"></i><strong>Facebook</strong> — Share parish content and announcements on Facebook</li>
-          </ul>
+          <table>
+            <thead><tr><th style="width:35%">Integration</th><th>What It Does</th></tr></thead>
+            <tbody>
+              <tr><td>SMS Gateway</td><td>Send text messages to individual parishioners, groups, zones, or the entire parish from within the dashboard</td></tr>
+              <tr><td>Digital Payments — MTN MOMO &amp; Bank</td><td>Accept offerings, fees, and subscriptions digitally; payments auto-record in Fund Management (Module 2)</td></tr>
+              <tr><td>Local Government Systems</td><td>Exchange data with Rwandan government agencies for cross-verification and official reporting</td></tr>
+              <tr><td>Other Religious Organizations</td><td>Share and verify data with other recognized churches and religious bodies in Rwanda</td></tr>
+              <tr><td>X (Twitter)</td><td>Post parish announcements and events directly to X from within the dashboard</td></tr>
+              <tr><td>WhatsApp</td><td>Send parish communications via WhatsApp directly from the dashboard</td></tr>
+              <tr><td>Facebook</td><td>Share parish content and announcements on Facebook directly from the dashboard</td></tr>
+            </tbody>
+          </table>
         </div>
+
       </section>
 
       <hr class="divider" />
