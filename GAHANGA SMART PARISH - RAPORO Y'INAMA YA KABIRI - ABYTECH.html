@@ -264,11 +264,7 @@
 <div class="mobile-header">
   <button class="hamburger" id="hamburger"><i class="fa-solid fa-bars"></i></button>
   <div class="mobile-brand">
-    <svg viewBox="0 0 80 90" width="26" height="30" xmlns="http://www.w3.org/2000/svg">
-      <polygon points="40,0 80,90 62.5,90 40,32.5 17.5,90 0,90" fill="#1a5c78"/>
-      <rect x="55" y="2.5" width="30" height="10" fill="#e8621a"/>
-      <rect x="64" y="2.5" width="12" height="45" fill="#e8621a"/>
-    </svg>
+    <img src="./tran.png" width="26" height="30" alt="AbyTech Hub" style="object-fit:contain;flex-shrink:0;scale:1.4;">
     <div>
       <div class="mobile-brand-name">Gahanga Smart Parish</div>
       <div class="mobile-brand-sub">Second Meeting · Oct 12, 2024</div>
@@ -283,11 +279,7 @@
   <nav class="sidebar" id="sidebar">
     <div class="sidebar-logo">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:12px;">
-        <svg viewBox="0 0 80 90" width="42" height="48" xmlns="http://www.w3.org/2000/svg" style="flex-shrink:0;">
-          <polygon points="40,0 80,90 62.5,90 40,32.5 17.5,90 0,90" fill="#1a5c78"/>
-          <rect x="55" y="2.5" width="30" height="10" fill="#e8621a"/>
-          <rect x="64" y="2.5" width="12" height="45" fill="#e8621a"/>
-        </svg>
+        <img src="./tran.png" width="42" height="48" alt="AbyTech Hub" style="object-fit:contain;flex-shrink:0;scale:1.7;">
         <div>
           <div style="font-size:13px;font-weight:800;color:#fff;letter-spacing:0.5px;line-height:1.2;">ABY<span style="color:#e8621a;">TECH</span>-HUB</div>
           <div style="font-size:10px;color:rgba(255,255,255,0.4);letter-spacing:1px;text-transform:uppercase;margin-top:2px;">Prepared by</div>
@@ -327,11 +319,7 @@
     <!-- HERO -->
     <div class="hero">
       <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;">
-        <svg viewBox="0 0 80 90" width="28" height="32" xmlns="http://www.w3.org/2000/svg">
-          <polygon points="40,0 80,90 62.5,90 40,32.5 17.5,90 0,90" fill="rgba(255,255,255,0.5)"/>
-          <rect x="55" y="2.5" width="30" height="10" fill="rgba(255,255,255,0.9)"/>
-          <rect x="64" y="2.5" width="12" height="45" fill="rgba(255,255,255,0.9)"/>
-        </svg>
+        <img src="./tran.png" width="28" height="32" alt="AbyTech Hub" style="object-fit:contain;filter:brightness(0) invert(1);opacity:0.85;">
         <div style="font-size:12px;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:1px;text-transform:uppercase;">
           Prepared by <span style="color:#fff;">AbyTech Hub</span> &nbsp;·&nbsp; Client: Gahanga Parish
         </div>
@@ -436,7 +424,7 @@
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:2px;flex-wrap:wrap;">
             <i class="fa-solid fa-diagram-project" style="color:var(--brand);font-size:15px;"></i>
             <span style="font-size:15px;font-weight:800;color:var(--brand-dark);">Module Relationship Diagram</span>
-            <span style="background:var(--brand-pale);color:var(--brand);font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;border:1px solid var(--border);">8 modules · 12 connections</span>
+            <span style="background:var(--brand-pale);color:var(--brand);font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;border:1px solid var(--border);">8 modules · 13 connections</span>
             <span style="font-size:11.5px;color:var(--text-muted);font-style:italic;margin-left:auto;">Click any module to inspect its connections</span>
           </div>
           <p style="font-size:12.5px;color:var(--text-muted);margin:6px 0 10px;">M8 Integrations sits at the centre as the data hub — connecting inward to 3 modules and receiving feeds from 3 others. Each badge shows the total number of connections a module has.</p>
@@ -516,6 +504,7 @@
             {from:'M2',to:'M7',lbl:'financial records',hub:false},
             {from:'M3',to:'M6',lbl:'website content', hub:false},
             {from:'M3',to:'M8',lbl:'social media',    hub:true},
+            {from:'M4',to:'M7',lbl:'group stats',     hub:false},
             {from:'M4',to:'M8',lbl:'group SMS lists', hub:true},
             {from:'M5',to:'M7',lbl:'sacrament status',hub:false},
             {from:'M8',to:'M2',lbl:'payments auto',   hub:true},
@@ -790,7 +779,7 @@
             </tr>
             <tr>
               <td class="mod-name">M4 — Group Mgmt</td>
-              <td class="sends-to"><span class="rel-dot rel-dot-send"></span>M8 (SMS group recipient lists)</td>
+              <td class="sends-to"><span class="rel-dot rel-dot-send"></span>M7 (group &amp; commission stats) · M8 (SMS group recipient lists)</td>
               <td class="receives-from"><span class="rel-dot rel-dot-recv"></span>M1 (member household records)</td>
             </tr>
             <tr>
@@ -806,7 +795,7 @@
             <tr>
               <td class="mod-name">M7 — Reports</td>
               <td class="sends-to"><span class="rel-dot rel-dot-send"></span>PDF / Excel exports</td>
-              <td class="receives-from"><span class="rel-dot rel-dot-recv"></span>M1 · M2 · M3 · M4 · M5 (all data modules)</td>
+              <td class="receives-from"><span class="rel-dot rel-dot-recv"></span>M1 · M2 · M4 · M5</td>
             </tr>
             <tr>
               <td class="mod-name">M8 — Integrations</td>
@@ -940,6 +929,7 @@
           </table>
           <div class="mod-connects">
             <span class="mod-connects-label">Data connections:</span>
+            <span class="rel-tag rel-sends"><i class="fa-solid fa-arrow-right"></i> M7 — group &amp; commission reports</span>
             <span class="rel-tag rel-sends"><i class="fa-solid fa-arrow-right"></i> M8 — group SMS recipient lists</span>
             <span class="rel-tag rel-receives"><i class="fa-solid fa-arrow-left"></i> M1 — member household records (linked, not re-entered)</span>
           </div>
@@ -1089,8 +1079,7 @@
             <span class="mod-connects-label">Data connections:</span>
             <span class="rel-tag rel-receives"><i class="fa-solid fa-arrow-left"></i> M1 — household &amp; population data</span>
             <span class="rel-tag rel-receives"><i class="fa-solid fa-arrow-left"></i> M2 — financial records</span>
-            <span class="rel-tag rel-receives"><i class="fa-solid fa-arrow-left"></i> M3 — publication records</span>
-            <span class="rel-tag rel-receives"><i class="fa-solid fa-arrow-left"></i> M4 — group &amp; membership data</span>
+            <span class="rel-tag rel-receives"><i class="fa-solid fa-arrow-left"></i> M4 — group &amp; commission data</span>
             <span class="rel-tag rel-receives"><i class="fa-solid fa-arrow-left"></i> M5 — sacrament records</span>
           </div>
         </div>
