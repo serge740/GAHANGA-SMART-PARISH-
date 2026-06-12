@@ -657,6 +657,94 @@
     .sac-no  { background: #fde8e6; color: var(--accent-red);   font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
     .sac-na  { background: #f0f0f0; color: #888;                font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; white-space: nowrap; }
 
+    /* ── Feature blocks ── */
+    .feature-list { display: flex; flex-direction: column; gap: 0; margin-top: 24px; }
+
+    .feature-block {
+      display: flex;
+      gap: 20px;
+      padding: 22px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .feature-block:last-child { border-bottom: none; }
+
+    .feature-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--brand-pale);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--brand);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .feature-body { flex: 1; }
+    .feature-name { font-size: 15px; font-weight: 700; color: var(--brand-dark); margin-bottom: 6px; }
+    .feature-desc { font-size: 13.5px; color: var(--text); line-height: 1.65; margin-bottom: 8px; }
+    .feature-example {
+      font-size: 12.5px;
+      color: var(--brand);
+      background: var(--brand-pale);
+      border-left: 3px solid var(--brand);
+      padding: 7px 12px;
+      border-radius: 0 6px 6px 0;
+      line-height: 1.5;
+    }
+    .feature-example strong { color: var(--brand-dark); }
+
+    /* ── Flow diagrams ── */
+    .flow-wrap { overflow-x: auto; margin: 14px 0 10px; padding: 18px 0 4px; }
+    .flow-diagram { display: flex; align-items: center; gap: 0; min-width: max-content; counter-reset: flow-step; }
+    .flow-box { background: var(--brand-pale); border: 1.5px solid var(--border); border-radius: 10px; padding: 12px 14px; text-align: center; width: 126px; position: relative; }
+    .flow-box-final { background: var(--brand); border-radius: 10px; padding: 12px 14px; text-align: center; width: 126px; position: relative; }
+    .flow-box::before, .flow-box-final::before {
+      counter-increment: flow-step;
+      content: counter(flow-step);
+      position: absolute;
+      top: -11px; left: 50%; transform: translateX(-50%);
+      width: 21px; height: 21px; border-radius: 50%;
+      background: var(--brand-light); color: #fff;
+      font-size: 10px; font-weight: 800;
+      text-align: center; line-height: 21px; z-index: 1;
+    }
+    .flow-box-final::before { background: var(--brand-dark); }
+    .flow-icon { font-size: 17px; color: var(--brand); margin-bottom: 5px; display: block; }
+    .flow-box-final .flow-icon { color: rgba(255,255,255,0.85); }
+    .flow-label { font-size: 10.5px; font-weight: 700; color: var(--brand-dark); line-height: 1.4; display: block; }
+    .flow-box-final .flow-label { color: #fff; }
+    .flow-arrow { font-size: 18px; color: var(--brand-light); padding: 0 7px; flex-shrink: 0; line-height: 1; }
+    .flow-note { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; font-style: italic; }
+
+    /* ── Module cross-reference tags ── */
+    .module-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: #f0f7fa; border: 1px dashed var(--border); border-radius: 20px;
+      padding: 4px 11px 4px 8px; font-size: 11.5px; font-weight: 600;
+      color: var(--brand); margin: 4px 0 10px; cursor: default;
+    }
+    .module-link i { color: var(--brand-light); font-size: 10px; }
+    .module-link + .module-link { margin-top: -6px; }
+
+    /* ── Data requirements table ── */
+    .data-needs { margin-top: 10px; margin-bottom: 12px; border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .data-needs-title {
+      background: var(--brand-pale); padding: 6px 12px;
+      font-size: 11.5px; font-weight: 700; color: var(--brand-dark);
+      display: flex; align-items: center; gap: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+    .data-needs-title i { color: var(--brand-light); }
+    .data-row { display: flex; border-top: 1px solid var(--border); }
+    .data-row:first-of-type { border-top: none; }
+    .data-field { width: 155px; flex-shrink: 0; padding: 5px 10px; font-size: 12px; font-weight: 700; color: var(--brand-dark); background: #f9fdfe; border-right: 1px solid var(--border); line-height: 1.4; }
+    .data-why { flex: 1; padding: 5px 10px; font-size: 12px; color: var(--text-muted); line-height: 1.45; }
+
     /* ── Integration grid ── */
     .int-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 24px; }
 
@@ -1067,7 +1155,7 @@
               <div class="h-vline"></div>
             </div>
             <div class="h-box" style="border-color:var(--brand-light);border-width:2px;">
-              <div class="h-title">Parish <span class="tag tag-orange" style="margin-left:8px;font-size:10px;">Level 1</span></div>
+              <div class="h-title">Parish <span style="font-weight:400;color:var(--text-muted);font-size:13px;">(Paruwasi)</span> <span class="tag tag-orange" style="margin-left:8px;font-size:10px;">Level 1</span></div>
               <div class="h-sub">Top-level administrative unit. All data rolls up to this level.</div>
             </div>
           </div>
@@ -1078,7 +1166,7 @@
               <div class="h-vline"></div>
             </div>
             <div class="h-box" style="border-color:var(--brand);">
-              <div class="h-title">Chapel Zone <span class="tag tag-blue" style="margin-left:8px;font-size:10px;">Level 2</span></div>
+              <div class="h-title">Chapel Zone <span style="font-weight:400;color:var(--text-muted);font-size:13px;">(Santarali)</span> <span class="tag tag-blue" style="margin-left:8px;font-size:10px;">Level 2</span></div>
               <div class="h-sub">Geographic division of the parish — each with its own chapel or sub-location.</div>
             </div>
           </div>
@@ -1089,7 +1177,7 @@
               <div class="h-vline"></div>
             </div>
             <div class="h-box">
-              <div class="h-title">Family Group Cluster <span class="tag tag-blue" style="margin-left:8px;font-size:10px;">Level 3</span></div>
+              <div class="h-title">Family Group Cluster <span style="font-weight:400;color:var(--text-muted);font-size:13px;">(Impuzamiryangoremezo)</span> <span class="tag tag-blue" style="margin-left:8px;font-size:10px;">Level 3</span></div>
               <div class="h-sub">A cluster of multiple family groups within a chapel zone.</div>
             </div>
           </div>
@@ -1100,7 +1188,7 @@
               <div class="h-vline"></div>
             </div>
             <div class="h-box">
-              <div class="h-title">Family Cluster <span class="tag tag-blue" style="margin-left:8px;font-size:10px;">Level 4</span></div>
+              <div class="h-title">Family Cluster <span style="font-weight:400;color:var(--text-muted);font-size:13px;">(Umuryangoremezo)</span> <span class="tag tag-blue" style="margin-left:8px;font-size:10px;">Level 4</span></div>
               <div class="h-sub">A group of related households within a family group cluster.</div>
             </div>
           </div>
@@ -1110,7 +1198,7 @@
               <div class="h-dot" style="width:10px;height:10px;background:var(--brand-pale);border:2px solid #9dbfcc;"></div>
             </div>
             <div class="h-box" style="background:var(--brand-pale);">
-              <div class="h-title">Individual Household <span class="tag tag-green" style="margin-left:8px;font-size:10px;">Level 5 — Base Unit</span></div>
+              <div class="h-title">Individual Household <span style="font-weight:400;color:var(--text-muted);font-size:13px;">(Umuryango)</span> <span class="tag tag-green" style="margin-left:8px;font-size:10px;">Level 5 — Base Unit</span></div>
               <div class="h-sub">The base unit of the system. All Christian records, sacraments, and financial entries are attached here.</div>
             </div>
           </div>
@@ -1183,13 +1271,250 @@
       <section class="section" id="module-1">
         <div class="section-label">Module 1</div>
         <h2>Christian Management</h2>
-        <p class="lead">The Christian Management module is the foundation of the entire system. Every other module — sacraments, funds, groups, reports — traces back to a household record stored here. All current paper household registration forms are replaced by this digital equivalent.</p>
+        <p class="lead">The Christian Management module is the foundation of the entire system. Every household in the parish is registered here, and every other module — sacraments, finances, groups, reports — links back to these records. All paper household registration forms are replaced by the digital equivalent in this module.</p>
 
-        <h3>How It Works</h3>
-        <p>Parish staff register every Catholic household in the parish using a digital form that mirrors the existing paper household registration form. When a household is created, the system automatically places it at the correct position in the 5-level hierarchy — linked to its Chapel Zone, Family Group Cluster, and Family Cluster. Once registered, the household has a permanent profile page that consolidates all information about that family: every member listed, all sacraments they have received, their financial transaction history with the parish, and which parish groups they belong to. Everything about one family is visible from a single screen.</p>
-        <p>Staff can open any household record at any time to correct or update information — names, marital status, address, member additions or removals. Changes take effect immediately across the whole system. When a family physically moves to a different zone or chapel area, their record is transferred to the new location without duplicating it — the complete history of that household follows them. If a family leaves the parish entirely, their record is deactivated rather than deleted. It no longer appears in active reports and counts, but the data is retained in the database for historical audit purposes.</p>
+        <p>The module has six core functions. Each one is explained below with an example.</p>
 
-        <h3>Data Stored Per Household</h3>
+        <div class="feature-list">
+
+          <div class="feature-block">
+            <div class="feature-num">1</div>
+            <div class="feature-body">
+              <div class="feature-name">Registration — Entering a New Household</div>
+              <p class="feature-desc">Use this to add a family that is not yet in the system for the first time.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-plus"></i></span>
+                    <span class="flow-label">Click "Add Household"</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-file-pen"></i></span>
+                    <span class="flow-label">Fill in names, dates &amp; contact info</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-location-dot"></i></span>
+                    <span class="flow-label">Select Chapel Zone &amp; Family Group</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-floppy-disk"></i></span>
+                    <span class="flow-label">Click Save — household created</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">The family now appears in the parish database, linked to their zone and family group — visible on the dashboard immediately.</p>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-table-list"></i> Data collected &amp; why</div>
+                <div class="data-row"><span class="data-field">Household Head Full Name</span><span class="data-why">To identify and address this household in all parish records and communications</span></div>
+                <div class="data-row"><span class="data-field">Phone Number</span><span class="data-why">For SMS alerts, emergency contact, and matching digital payment contributions to the household</span></div>
+                <div class="data-row"><span class="data-field">National ID Number</span><span class="data-why">To verify identity against government records and prevent duplicate registrations</span></div>
+                <div class="data-row"><span class="data-field">Home Address / Village</span><span class="data-why">For zone assignment and planning pastoral visits to the correct location</span></div>
+                <div class="data-row"><span class="data-field">Chapel Zone</span><span class="data-why">Routes this household to the correct zone administrator and includes them in zone-level reports</span></div>
+                <div class="data-row"><span class="data-field">Family Group Cluster</span><span class="data-why">Connects the household to their nearest community cell for meetings and pastoral care</span></div>
+                <div class="data-row"><span class="data-field">Number of Members</span><span class="data-why">For the parish population census and planning (seating, resources, outreach)</span></div>
+                <div class="data-row"><span class="data-field">Date of Registration</span><span class="data-why">For anniversary follow-up and accurate historical records — when this household joined the parish</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> The Mugabo family is new to the parish. The secretary opens "Add New Household," fills in Jean Mugabo as the head, lists his wife and two children as members, selects their chapel zone "Busanza," and saves. The household immediately appears in the Busanza zone list and in the parish-wide count on the dashboard.</div>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <div class="feature-num">2</div>
+            <div class="feature-body">
+              <div class="feature-name">Edit — Correcting a Mistake in a Record</div>
+              <p class="feature-desc">Use this to fix something entered wrong — a misspelled name, wrong date of birth, or incorrect zone selected at registration.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <span class="flow-label">Search &amp; open the household</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-pen-to-square"></i></span>
+                    <span class="flow-label">Click "Edit"</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-circle-xmark"></i></span>
+                    <span class="flow-label">Correct the wrong field</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-floppy-disk"></i></span>
+                    <span class="flow-label">Click Save — fixed everywhere</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">The correction applies instantly everywhere — reports, lists, and the dashboard all show the correct value immediately.</p>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-table-list"></i> Data collected &amp; why</div>
+                <div class="data-row"><span class="data-field">Field Being Corrected</span><span class="data-why">So the system logs exactly which data item was wrong — creates an audit trail of what changed</span></div>
+                <div class="data-row"><span class="data-field">Correct Value</span><span class="data-why">The accurate information that replaces the mistake — applies everywhere that field is displayed</span></div>
+                <div class="data-row"><span class="data-field">Editor Username</span><span class="data-why">Logged automatically — staff accountability record of who made the correction and when</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> During registration, the secretary typed "Mugabo Jean" instead of "Jean Mugabo" as the household head name. She opens the Mugabo household, clicks Edit, corrects the name field, and saves. The corrected name now appears everywhere in the system.</div>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <div class="feature-num">3</div>
+            <div class="feature-body">
+              <div class="feature-name">Update — Recording a Real Change in the Family</div>
+              <p class="feature-desc">Use this when something in the family's real life has changed — a birth, a death, a new phone number, or a move to a new address.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <span class="flow-label">Search &amp; open the household</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-pen"></i></span>
+                    <span class="flow-label">Click "Update"</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-arrows-rotate"></i></span>
+                    <span class="flow-label">Change the detail that changed in real life</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-floppy-disk"></i></span>
+                    <span class="flow-label">Click Save — record updated</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">The record now reflects the family's real current situation. Dashboard totals update automatically.</p>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-table-list"></i> Data collected &amp; why</div>
+                <div class="data-row"><span class="data-field">Type of Life Event</span><span class="data-why">Classifies the change correctly: new birth / death / marriage / new phone / relocation — affects which statistics are updated</span></div>
+                <div class="data-row"><span class="data-field">Details of the Change</span><span class="data-why">The specific new information — e.g., the newborn's name and date of birth, or the date of death, or the new phone number</span></div>
+                <div class="data-row"><span class="data-field">Date the Event Occurred</span><span class="data-why">The real-life date of the event, not the date it was entered — important for accurate historical records and anniversary tracking</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> Jean Mugabo's wife passes away. The secretary opens the Mugabo household, clicks Update, changes the family status from "Both spouses present" to "Widowed," and saves. The dashboard's count under "Widowed" increases by one automatically.</div>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <div class="feature-num">4</div>
+            <div class="feature-body">
+              <div class="feature-name">Transfer — Moving a Household to a Different Zone</div>
+              <p class="feature-desc">Use this when a family physically moves to a different area and their zone in the system needs to change.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <span class="flow-label">Search &amp; open the household</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-truck-moving"></i></span>
+                    <span class="flow-label">Click "Transfer"</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-location-dot"></i></span>
+                    <span class="flow-label">Select the new Zone &amp; Family Group</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-right-left"></i></span>
+                    <span class="flow-label">Click Confirm — household moved</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">The household moves to the new zone. All their history — sacraments, finances, group memberships — stays attached to the same record.</p>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-table-list"></i> Data collected &amp; why</div>
+                <div class="data-row"><span class="data-field">Destination Zone</span><span class="data-why">The new Chapel Zone (or new parish) — moves the household out of the old zone's counts and into the new one</span></div>
+                <div class="data-row"><span class="data-field">Reason for Transfer</span><span class="data-why">For pastoral records — helps zone leaders understand population movement and plan follow-up</span></div>
+                <div class="data-row"><span class="data-field">Date of Transfer</span><span class="data-why">The date the family physically moved — not the date of data entry — for accurate zone membership history</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> The Mugabo family builds a new house and moves from Chapel Zone Busanza to Chapel Zone Kanserege. The secretary opens their record, clicks Transfer, selects "Kanserege" as the new zone, and confirms. The family disappears from Busanza's list and appears in Kanserege's list. All their past records remain unchanged.</div>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <div class="feature-num">5</div>
+            <div class="feature-body">
+              <div class="feature-name">View Details — Opening the Full Household Profile</div>
+              <p class="feature-desc">Use this to look up everything about a household — their members, sacraments, group memberships, and financial transactions.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <span class="flow-label">Type the name in the search bar</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-address-card"></i></span>
+                    <span class="flow-label">Click the household to open it</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-eye"></i></span>
+                    <span class="flow-label">Read the full profile on one screen</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">Everything about that family in one place — members, sacraments, group memberships, and financial records. No paper books needed.</p>
+              <div class="module-link"><i class="fa-solid fa-link"></i> Pulls sacrament records from <strong>Module 5 — Sacraments</strong></div>
+              <div class="module-link"><i class="fa-solid fa-link"></i> Pulls group memberships from <strong>Module 4 — Group Management</strong></div>
+              <div class="module-link"><i class="fa-solid fa-link"></i> Pulls contribution history from <strong>Module 2 — Fund Management</strong></div>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-eye"></i> Read-only — no data entered here</div>
+                <div class="data-row"><span class="data-field">What is displayed</span><span class="data-why">All registration fields, full member list, sacrament records, group memberships, life event history, and financial contributions — all in one screen</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> A visitor comes to the parish office asking about the baptism record of their child. The secretary searches for the Mugabo household, opens View Details, and immediately sees under the "Sacraments" section that Jean Mugabo Jr. was baptized on a specific date — all without opening a single paper register.</div>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <div class="feature-num">6</div>
+            <div class="feature-body">
+              <div class="feature-name">Deactivate — Removing a Family from Active Records</div>
+              <p class="feature-desc">Use this when a family permanently leaves the parish. Their data is never deleted — it is archived and can be restored if they return.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <span class="flow-label">Search &amp; open the household</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-toggle-off"></i></span>
+                    <span class="flow-label">Click "Deactivate"</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-circle-check"></i></span>
+                    <span class="flow-label">Click Confirm</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-box-archive"></i></span>
+                    <span class="flow-label">Removed from all active lists — data kept</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">The family disappears from all counts and reports. Their full history is preserved — if they return, one click reactivates the record.</p>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-table-list"></i> Data collected &amp; why</div>
+                <div class="data-row"><span class="data-field">Reason for Deactivation</span><span class="data-why">Classifies the departure: moved away / all members deceased / left the church — keeps statistics meaningful and distinguishes from active households</span></div>
+                <div class="data-row"><span class="data-field">Date of Deactivation</span><span class="data-why">For historical accuracy — shows when this household left the active parish community</span></div>
+                <div class="data-row"><span class="data-field">Authorizing Staff Member</span><span class="data-why">Logged automatically — prevents unauthorized deactivations and provides an audit trail</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> The Mugabo family moves permanently to Kigali and joins a different parish. The secretary opens their record, clicks Deactivate, and confirms. The parish total drops by the number of members in that household. If Jean Mugabo returns five years later, the secretary can search for the deactivated record and reactivate it — all previous history is still there.</div>
+            </div>
+          </div>
+
+        </div>
+
+        <h3 style="margin-top:32px;">Data Stored Per Household</h3>
         <table>
           <thead>
             <tr><th style="width:30%">Field</th><th>Description</th></tr>
@@ -1215,13 +1540,162 @@
       <section class="section" id="module-2">
         <div class="section-label">Module 2</div>
         <h2>Parish Fund Management</h2>
-        <p class="lead">The Fund Management module records every financial transaction that passes through the parish — from Sunday Mass offerings to special occasion fees. Every entry is categorized, dated, and permanently stored. Paper collection notebooks are fully replaced by a searchable, auditable digital ledger.</p>
+        <p class="lead">The Fund Management module replaces all paper collection notebooks with a permanent, searchable digital ledger. Every franc that enters the parish — at Sunday Mass, at a wedding, through a donation, or via mobile money — is recorded, categorized, and stored here. Nothing is lost, nothing needs to be added up by hand.</p>
 
-        <h3>How It Works</h3>
-        <p>When any financial collection takes place — whether at a Sunday Mass, a wedding, or a special fundraising event — a parish staff member records the entry in the system. Each entry is assigned to one of the defined collection categories, given an amount, a date, and the name of whoever collected it. The system builds a running ledger that can be searched and filtered at any time. Totals per category, per date range, or per zone can be generated without any manual addition.</p>
-        <p>For digital payments through MOMO or bank (see Module 8 — Integrations), the payment is automatically recorded as a new entry in this module the moment it is confirmed — no manual data entry required.</p>
+        <p>The module has four core functions explained below.</p>
 
-        <h3>Collection Categories</h3>
+        <div class="feature-list">
+
+          <div class="feature-block">
+            <div class="feature-num">1</div>
+            <div class="feature-body">
+              <div class="feature-name">Recording a Collection Entry</div>
+              <p class="feature-desc">Use this after any collection — at Mass, an event, or the office — to record the money received.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-plus"></i></span>
+                    <span class="flow-label">Click "Add Entry"</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-tag"></i></span>
+                    <span class="flow-label">Select the collection category</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-coins"></i></span>
+                    <span class="flow-label">Enter the amount &amp; date</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-floppy-disk"></i></span>
+                    <span class="flow-label">Click Save — recorded in ledger</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">The entry is permanently in the ledger under the correct category. It is immediately visible in reports.</p>
+              <div class="module-link"><i class="fa-solid fa-link"></i> Digital payments skip this step — auto-recorded by <strong>Module 8 — Integrations</strong></div>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-table-list"></i> Data collected &amp; why</div>
+                <div class="data-row"><span class="data-field">Amount (RWF)</span><span class="data-why">The monetary value being recorded — the core number in every financial report</span></div>
+                <div class="data-row"><span class="data-field">Fund Category</span><span class="data-why">Classifies the entry (tithe / offering / donation / fee / expense) so reports can break down totals by type</span></div>
+                <div class="data-row"><span class="data-field">Contributor Name / Household</span><span class="data-why">Attributes the entry to a specific household — enables per-household giving history</span></div>
+                <div class="data-row"><span class="data-field">Date</span><span class="data-why">The date the collection happened — used in monthly and annual summaries and reports</span></div>
+                <div class="data-row"><span class="data-field">Payment Method</span><span class="data-why">Cash / MoMo / Bank — needed to reconcile with bank and MoMo statements at month end</span></div>
+                <div class="data-row"><span class="data-field">Notes (optional)</span><span class="data-why">For special designations — e.g., "Gift toward roofing project" — so the treasurer knows the purpose</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> After Sunday Mass on 15 June, the finance secretary opens the system, selects "General Church Collection," enters 45,000 RWF, enters the date, and clicks Save. That collection now appears in the ledger with the date, amount, category, and collector's name.</div>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <div class="feature-num">2</div>
+            <div class="feature-body">
+              <div class="feature-name">Searching and Filtering the Ledger</div>
+              <p class="feature-desc">Use this to look up past collection records — for example, to find all donations in a specific month or all wedding fees collected this year.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-book-open"></i></span>
+                    <span class="flow-label">Open the Ledger</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-filter"></i></span>
+                    <span class="flow-label">Set filters: date, category, or zone</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-list-check"></i></span>
+                    <span class="flow-label">Read the matching records</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">Any question about past collections is answered in seconds — no searching through paper notebooks.</p>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-table-list"></i> Filter inputs &amp; why</div>
+                <div class="data-row"><span class="data-field">Date Range</span><span class="data-why">Narrows results to a specific period — e.g., "January 2025 to March 2025" for a quarterly review</span></div>
+                <div class="data-row"><span class="data-field">Category Filter</span><span class="data-why">Shows only one fund type at a time — e.g., all "Special Occasion Fees" without mixing other categories</span></div>
+                <div class="data-row"><span class="data-field">Contributor Name</span><span class="data-why">Pulls one household's full giving history — useful for verifying membership dues or settling queries</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> The Finance Committee wants to review all wedding fees collected in 2024. The secretary opens the ledger, sets the filter to category "Special Occasion Fees" and date range "January 2024 – December 2024," and the system shows every matching entry with its date and amount.</div>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <div class="feature-num">3</div>
+            <div class="feature-body">
+              <div class="feature-name">Generating Totals and Reports</div>
+              <p class="feature-desc">Use this to get the total income for any period or category — for a committee meeting, a quarterly review, or a diocese submission.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-calendar-days"></i></span>
+                    <span class="flow-label">Select the period or category</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-calculator"></i></span>
+                    <span class="flow-label">Click "Generate Total"</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-file-export"></i></span>
+                    <span class="flow-label">Read result — print or export</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">The total is calculated instantly. No manual addition, no risk of arithmetic error. Ready to print or submit.</p>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-table-list"></i> Inputs to generate a report</div>
+                <div class="data-row"><span class="data-field">Report Period</span><span class="data-why">Month or year — defines the time scope so the system knows which ledger entries to include in the total</span></div>
+                <div class="data-row"><span class="data-field">Category Filter (optional)</span><span class="data-why">Narrows to one fund type — produces subtotals per category rather than a single grand total</span></div>
+                <div class="data-row"><span class="data-field">Output Format</span><span class="data-why">PDF for printing and presenting at meetings; Excel for further editing or diocese submission requirements</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> At the end of Quarter 1, the Finance Committee asks for the total income per category. The secretary clicks "Generate Report" for Q1, and the system produces a table showing: General Collection 180,000 RWF · Mass Offerings 45,000 RWF · Donations 22,000 RWF · etc. — ready to print and present at the meeting.</div>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <div class="feature-num">4</div>
+            <div class="feature-body">
+              <div class="feature-name">Auto-Recording Digital Payments</div>
+              <p class="feature-desc">This happens automatically — no action needed from staff. When a parishioner pays via MTN MoMo, the ledger entry is created by the system.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-mobile-screen-button"></i></span>
+                    <span class="flow-label">Parishioner pays via MTN MoMo</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-money-bill-wave"></i></span>
+                    <span class="flow-label">MTN confirms the payment</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-bolt"></i></span>
+                    <span class="flow-label">Ledger entry created — no staff action</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">The payment is recorded the moment MTN confirms it. No manual entry, no missed payments.</p>
+              <div class="module-link"><i class="fa-solid fa-link"></i> Triggered by <strong>Module 8 — Integrations: Digital Payments</strong> — data arrives automatically</div>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-bolt"></i> Data received automatically from the payment provider</div>
+                <div class="data-row"><span class="data-field">Amount (RWF)</span><span class="data-why">The payment value — written directly to the ledger with no manual entry</span></div>
+                <div class="data-row"><span class="data-field">Payer Phone Number</span><span class="data-why">Matched against Module 1 household records to identify who made the contribution</span></div>
+                <div class="data-row"><span class="data-field">Transaction Reference ID</span><span class="data-why">The MoMo or bank's unique ID — used to reconcile the ledger against bank statements at month end</span></div>
+                <div class="data-row"><span class="data-field">Timestamp</span><span class="data-why">Exact date and time of payment — becomes the date field in the ledger entry automatically</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> A parishioner pays their annual subscription of 5,000 RWF via MTN MOMO. The system receives the MOMO confirmation, and within seconds a new entry appears in the ledger: "Subscriptions &amp; Membership Dues · 5,000 RWF · paid via MOMO · today's date." No manual entry needed.</div>
+            </div>
+          </div>
+
+        </div>
+
+        <h3 style="margin-top:32px;">Collection Categories</h3>
         <table>
           <thead>
             <tr><th style="width:35%">Category</th><th>Description</th></tr>
@@ -1247,13 +1721,168 @@
       <section class="section" id="module-3">
         <div class="section-label">Module 3</div>
         <h2>Publications</h2>
-        <p class="lead">The Publications module is the parish's internal and public document management system. All official communication — whether a Sunday notice, a committee report, or a multi-year strategic plan — is uploaded, stored, and made accessible here.</p>
+        <p class="lead">The Publications module is the parish's central place for all official documents and communications. Instead of printing notices and pinning them on a board, uploading files to WhatsApp groups, or keeping reports in physical binders, everything is stored here — organized, searchable, and accessible from anywhere the system is available.</p>
 
-        <h3>How It Works</h3>
-        <p>An authorized staff member or committee secretary logs into the system and uploads a document or types an announcement directly. Every item is given a content type, a date, and an author. The system organizes content by type so that parishioners and staff can quickly find what they are looking for — all announcements in one place, all reports in another, all action plans together. Nothing gets lost in a pile of paper or a shared folder with no structure.</p>
-        <p>Published content is visible on the parish's public website (Module 6) depending on whether the staff member marks it as public or internal-only. Internal documents such as committee reports and financial plans remain accessible only to authorized users within the system.</p>
+        <p>The module has four core functions explained below.</p>
 
-        <h3>Content Types</h3>
+        <div class="feature-list">
+
+          <div class="feature-block">
+            <div class="feature-num">1</div>
+            <div class="feature-body">
+              <div class="feature-name">Publishing an Announcement or Notice</div>
+              <p class="feature-desc">Use this to share any news, bulletin, reminder, or notice with parishioners — online immediately, no printing needed.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-plus"></i></span>
+                    <span class="flow-label">Click "New Announcement"</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-keyboard"></i></span>
+                    <span class="flow-label">Type the announcement text</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-sliders"></i></span>
+                    <span class="flow-label">Set the date &amp; choose Public or Internal</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-paper-plane"></i></span>
+                    <span class="flow-label">Click Publish — live immediately</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">The announcement is live on the website (if Public) and can be shared to social media in the same step. No printing or WhatsApp forwarding needed.</p>
+              <div class="module-link"><i class="fa-solid fa-link"></i> If set to Public → automatically appears on <strong>Module 6 — Parish Website</strong></div>
+              <div class="module-link"><i class="fa-solid fa-link"></i> Can be pushed to social media via <strong>Module 8 — Integrations: Social Media</strong></div>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-table-list"></i> Data collected &amp; why</div>
+                <div class="data-row"><span class="data-field">Title</span><span class="data-why">Displayed as the heading on the website and in SMS previews — must be short and clear enough to communicate the topic at a glance</span></div>
+                <div class="data-row"><span class="data-field">Announcement Text</span><span class="data-why">The full content — what parishioners need to know</span></div>
+                <div class="data-row"><span class="data-field">Target Audience</span><span class="data-why">Whole parish / specific zone / specific group — determines who gets the SMS notification for this announcement</span></div>
+                <div class="data-row"><span class="data-field">Publish Date</span><span class="data-why">When the announcement goes live — allows drafting announcements in advance for a future date</span></div>
+                <div class="data-row"><span class="data-field">Expiry Date (optional)</span><span class="data-why">Automatically removes the announcement from the website when it is no longer relevant — keeps the website clean</span></div>
+                <div class="data-row"><span class="data-field">Visibility (Public / Internal)</span><span class="data-why">Public = visible on the parish website to anyone; Internal = only visible to logged-in staff</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> The Parish Priest wants to announce that Sunday Mass next week will start at 8:00 AM instead of the usual time. The secretary creates an Announcement, types the notice, marks it as Public, and saves. It appears on the website and in the system within seconds — no printing, no WhatsApp forwarding needed.</div>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <div class="feature-num">2</div>
+            <div class="feature-body">
+              <div class="feature-name">Uploading a Report or Official Document</div>
+              <p class="feature-desc">Use this to store any official document — committee reports, action plans, bulletins — so it is always findable and never lost.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-plus"></i></span>
+                    <span class="flow-label">Click "Upload Document"</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-file"></i></span>
+                    <span class="flow-label">Select the file from your computer</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-pen"></i></span>
+                    <span class="flow-label">Add title, type &amp; date — choose Public or Internal</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-cloud-arrow-up"></i></span>
+                    <span class="flow-label">Click Save — stored permanently</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">The document is stored permanently. Anyone with permission can find and download it at any time — it will never be lost.</p>
+              <div class="module-link"><i class="fa-solid fa-link"></i> If set to Public → document appears on <strong>Module 6 — Parish Website</strong> for anyone to download</div>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-table-list"></i> Data collected &amp; why</div>
+                <div class="data-row"><span class="data-field">Document Title</span><span class="data-why">The displayed name in the archive and on the website — must be descriptive enough to find without opening the file</span></div>
+                <div class="data-row"><span class="data-field">File (PDF or Word)</span><span class="data-why">The actual document content — stored securely and downloadable at any time</span></div>
+                <div class="data-row"><span class="data-field">Document Category</span><span class="data-why">Sunday Bulletin / Committee Report / Strategic Plan / Action Plan / etc. — for organized browsing and filtering in the archive</span></div>
+                <div class="data-row"><span class="data-field">Date</span><span class="data-why">The date of the document (not upload date) — for chronological browsing and finding documents from a specific period</span></div>
+                <div class="data-row"><span class="data-field">Visibility (Public / Internal)</span><span class="data-why">Public = downloadable from the parish website; Internal = staff dashboard only (for financial reports, strategic plans, etc.)</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> The Finance Committee completes their Q1 report. The secretary uploads the PDF file, selects type "Committee Report," enters the title "Finance Committee — Q1 2025 Report," marks it as Internal, and saves. All authorized users can now find and download it under Reports — and it will never be lost in a pile of papers.</div>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <div class="feature-num">3</div>
+            <div class="feature-body">
+              <div class="feature-name">Public vs Internal — Controlling Who Sees What</div>
+              <p class="feature-desc">Every item you publish has a visibility setting. Set it when you publish — you can change it later at any time.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-sliders"></i></span>
+                    <span class="flow-label">When publishing, find the "Visibility" field</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-globe"></i></span>
+                    <span class="flow-label">Choose PUBLIC — anyone on website sees it</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-lock"></i></span>
+                    <span class="flow-label">or INTERNAL — only logged-in staff see it</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">General news and announcements → Public. Financial reports, strategic plans, internal memos → Internal.</p>
+              <div class="module-link"><i class="fa-solid fa-link"></i> This setting controls what appears on <strong>Module 6 — Parish Website</strong></div>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-table-list"></i> Data collected &amp; why</div>
+                <div class="data-row"><span class="data-field">Visibility Setting</span><span class="data-why"><strong>Public</strong> — anyone visiting the parish website can see this content, no login needed. <strong>Internal</strong> — only logged-in staff can access it. This one field controls exactly who sees what.</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> The upcoming events calendar for December is marked Public — visitors to the website can see all Christmas Mass times. The Finance Committee's budget review document is marked Internal — only logged-in staff can access it, not the general public.</div>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <div class="feature-num">4</div>
+            <div class="feature-body">
+              <div class="feature-name">Finding and Browsing Past Publications</div>
+              <p class="feature-desc">Use this to find any past publication — nothing is ever deleted. A document from 3 years ago is as easy to find as one from today.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-folder-open"></i></span>
+                    <span class="flow-label">Open Publications</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-filter"></i></span>
+                    <span class="flow-label">Filter by type or date range</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-file-lines"></i></span>
+                    <span class="flow-label">Click to read or download</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">Every publication ever entered is retrievable. Nothing disappears after its date passes.</p>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-eye"></i> Read-only — no data stored here, only search filters</div>
+                <div class="data-row"><span class="data-field">Search Keywords</span><span class="data-why">To find a specific document by any word in its title</span></div>
+                <div class="data-row"><span class="data-field">Date Range</span><span class="data-why">To browse everything published within a particular period</span></div>
+                <div class="data-row"><span class="data-field">Document Category</span><span class="data-why">To view only one content type (e.g., only Bulletins, only Action Plans) without the others</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> A new committee member wants to read the parish's strategic plan from 2023. She opens Publications, selects type "Strategic Plan," and finds the document immediately — even though it was uploaded two years ago. She downloads and reads it without asking anyone for a copy.</div>
+            </div>
+          </div>
+
+        </div>
+
+        <h3 style="margin-top:32px;">Content Types</h3>
         <table>
           <thead>
             <tr><th style="width:30%">Type</th><th>What It Contains</th></tr>
@@ -1277,13 +1906,206 @@
       <section class="section" id="module-4">
         <div class="section-label">Module 4</div>
         <h2>Parish Group Management</h2>
-        <p class="lead">The Group Management module keeps a live, accurate record of every formal group operating within the parish — who belongs to each group, what role they hold, and how leadership is currently structured. There is no longer a risk of outdated rosters or unrecorded changes.</p>
+        <p class="lead">The Group Management module keeps a live, always-current record of every formal group in the parish. Every group has a roster that shows exactly who belongs to it, what role each person holds, and when that changed. Outdated paper lists and unrecorded leadership changes are eliminated entirely.</p>
 
-        <h3>How It Works</h3>
-        <p>Each group in the parish is created as a record in the system with a name and a group type. Once the group exists, members are added from the existing household database — meaning the system links directly to the person's household record rather than creating a separate entry for them. Every member is given a role within that group at the time they are added. When a person takes on a new position or leaves a group, the roster is updated immediately. The system always reflects current membership — not what was true six months ago.</p>
-        <p>Because members are linked from household records, the system can cross-reference a person's group involvement from their household profile, and can show a group's full member list from the group's own page. No duplication of data.</p>
+        <p>The module has five core functions explained below.</p>
 
-        <h3>Groups Registered in the System</h3>
+        <div class="feature-list">
+
+          <div class="feature-block">
+            <div class="feature-num">1</div>
+            <div class="feature-body">
+              <div class="feature-name">Creating a Group</div>
+              <p class="feature-desc">Use this when setting up a new commission, council, or any formal parish group for the first time.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-plus"></i></span>
+                    <span class="flow-label">Click "Add New Group"</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-tag"></i></span>
+                    <span class="flow-label">Enter the group name &amp; select its type</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-crown"></i></span>
+                    <span class="flow-label">Assign the group leader</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-floppy-disk"></i></span>
+                    <span class="flow-label">Click Save — group created</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">The group now exists in the system with an empty roster, ready for members to be added.</p>
+              <div class="module-link"><i class="fa-solid fa-link"></i> Group names appear in <strong>Module 8 — Integrations: SMS</strong> as selectable recipient targets</div>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-table-list"></i> Data collected &amp; why</div>
+                <div class="data-row"><span class="data-field">Group Name</span><span class="data-why">The official name used in rosters, reports, and when sending SMS to the group as a recipient target</span></div>
+                <div class="data-row"><span class="data-field">Group Type</span><span class="data-why">Choir / Youth / Women / Men / Prayer / Commission / Committee — classifies the group for reports and filtering</span></div>
+                <div class="data-row"><span class="data-field">Zone or Area</span><span class="data-why">Geographic assignment — links the group to a Chapel Zone for zone-level reporting</span></div>
+                <div class="data-row"><span class="data-field">Meeting Schedule</span><span class="data-why">Day, time, and location — used in the parish calendar and for sending member reminder SMSs before meetings</span></div>
+                <div class="data-row"><span class="data-field">Group Leader Name</span><span class="data-why">The responsible person — their name appears on communications and reports. Must be an existing household member in Module 1</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> The parish creates a new Youth Commission. The admin opens "Add New Group," names it "Youth Commission," selects type "Commission," and saves. The group now appears in the system. Members can be added to it immediately.</div>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <div class="feature-num">2</div>
+            <div class="feature-body">
+              <div class="feature-name">Adding a Member to a Group</div>
+              <p class="feature-desc">Use this to add someone to an existing group and give them a role — President, Secretary, Treasurer, or Member.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-people-group"></i></span>
+                    <span class="flow-label">Open the group</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-user-plus"></i></span>
+                    <span class="flow-label">Click "Add Member"</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <span class="flow-label">Search &amp; select the person's name</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-user-gear"></i></span>
+                    <span class="flow-label">Choose their role, click Save</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">No re-entering data — the person is linked from their household record. Their profile shows this membership immediately.</p>
+              <div class="module-link"><i class="fa-solid fa-link"></i> Person must first be registered in <strong>Module 1 — Christian Management</strong> — membership is linked to their household record</div>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-table-list"></i> Data collected &amp; why</div>
+                <div class="data-row"><span class="data-field">Household / Individual Name</span><span class="data-why">Searched and selected from Module 1 — no re-typing. Links the membership directly to their existing profile</span></div>
+                <div class="data-row"><span class="data-field">Date Joined</span><span class="data-why">For tenure records — allows calculating years of service and planning recognition</span></div>
+                <div class="data-row"><span class="data-field">Role in Group</span><span class="data-why">President / Secretary / Treasurer / Member — defines their responsibilities and appears on the official roster</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> Marie Uwase joins the Youth Commission as Secretary. The admin opens the Youth Commission group, searches for "Marie Uwase," selects her household record, assigns her the role "Secretary," and saves. Marie's household profile now shows she is a member of the Youth Commission, and the Youth Commission roster shows her as Secretary.</div>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <div class="feature-num">3</div>
+            <div class="feature-body">
+              <div class="feature-name">Changing a Member's Role</div>
+              <p class="feature-desc">Use this after an election or appointment — when someone's position in a group changes.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-people-group"></i></span>
+                    <span class="flow-label">Open the group</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <span class="flow-label">Find the person in the roster</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-pen-to-square"></i></span>
+                    <span class="flow-label">Click Edit → select the new role</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-floppy-disk"></i></span>
+                    <span class="flow-label">Click Save — role updated</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">The new role is visible immediately in the group roster and on the person's household profile.</p>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-table-list"></i> Data collected &amp; why</div>
+                <div class="data-row"><span class="data-field">New Role</span><span class="data-why">The updated position — replaces the previous role on the roster and on the person's profile in Module 1</span></div>
+                <div class="data-row"><span class="data-field">Date of Change</span><span class="data-why">For role history records — shows when leadership changed, useful for governance reports and tenure tracking</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> After the Finance Committee elections, Jean Mugabo moves from "Member" to "President." The admin opens the Finance Committee, finds Jean's entry, changes his role from "Member" to "President," and saves. The roster now shows Jean as President, and his household profile reflects this change.</div>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <div class="feature-num">4</div>
+            <div class="feature-body">
+              <div class="feature-name">Removing a Member from a Group</div>
+              <p class="feature-desc">Use this when someone leaves a group — their term has ended, they resigned, or they can no longer participate.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-people-group"></i></span>
+                    <span class="flow-label">Open the group</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <span class="flow-label">Find the person in the roster</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-user-minus"></i></span>
+                    <span class="flow-label">Click "Remove"</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-circle-check"></i></span>
+                    <span class="flow-label">Click Confirm — removed from group</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">The person is removed from this group only — their household record and any other group memberships are unchanged.</p>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-table-list"></i> Data collected &amp; why</div>
+                <div class="data-row"><span class="data-field">Reason for Leaving</span><span class="data-why">Term ended / relocated / resigned / health / disciplinary — for group health statistics and pastoral follow-up planning</span></div>
+                <div class="data-row"><span class="data-field">Date Left</span><span class="data-why">For historical roster accuracy — shows when membership ended, not just that it ended</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> Marie Uwase leaves the Youth Commission due to work commitments. The admin opens the Youth Commission, finds Marie, and removes her. The commission roster now has one fewer member, and Marie's household profile no longer lists Youth Commission membership — but her full household record is unchanged.</div>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <div class="feature-num">5</div>
+            <div class="feature-body">
+              <div class="feature-name">Viewing a Group's Full Roster</div>
+              <p class="feature-desc">Use this to see every current member of a group — their names, phone numbers, and roles — in one list.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-people-group"></i></span>
+                    <span class="flow-label">Open the group</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-list-ul"></i></span>
+                    <span class="flow-label">Click the Roster tab</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-address-card"></i></span>
+                    <span class="flow-label">Read all members with roles &amp; contacts</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">The roster is always current — no maintaining a separate spreadsheet or printed list.</p>
+              <div class="module-link"><i class="fa-solid fa-link"></i> Member contact numbers come from <strong>Module 1 — Christian Management</strong> household records</div>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-eye"></i> Read-only — no data entered here</div>
+                <div class="data-row"><span class="data-field">What is displayed</span><span class="data-why">Every current member's name, role, phone number, and date joined — always live and accurate with no separate list to maintain</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> Before a Finance Committee meeting, the Parish Priest opens the Finance Committee group in the system. He sees all 7 members listed with their names, phone numbers, and roles — President, Secretary, Treasurer, and Members — all current and accurate, without anyone having to prepare a separate attendance list.</div>
+            </div>
+          </div>
+
+        </div>
+
+        <h3 style="margin-top:32px;">Groups Registered in the System</h3>
         <table>
           <thead>
             <tr><th style="width:35%">Group</th><th>Type</th></tr>
@@ -1299,9 +2121,6 @@
             <tr><td>Catholic Action Groups</td><td>Apostolic / Lay Ministry</td></tr>
           </tbody>
         </table>
-
-        <h3>Data Stored Per Group Member</h3>
-        <p>For every person in every group, the system records: their <strong>full name</strong> (linked from their household record), their <strong>personal identification details</strong>, and their <strong>role within the group</strong> — such as President, Vice President, Secretary, Treasurer, or Member.</p>
       </section>
 
       <hr class="divider" />
@@ -1312,13 +2131,130 @@
       <section class="section" id="module-5">
         <div class="section-label">Module 5</div>
         <h2>Sacrament Management</h2>
-        <p class="lead">The Sacrament Management module creates a permanent, searchable record of every sacrament received by every person in the parish. All 6 Catholic sacraments are tracked here, each with its own set of required data and its own rules about preparation classes and examinations.</p>
+        <p class="lead">The Sacrament Management module creates a permanent, searchable record of every sacrament received by every person in the parish. All 6 Catholic sacraments are tracked here, each with its own required data fields and its own rules about preparation classes and exams. The system enforces these rules automatically — no staff member needs to remember which sacrament requires what.</p>
 
-        <h3>How It Works</h3>
-        <p>When a person is preparing to receive a sacrament, a staff member opens their record and creates a new sacrament entry. The system presents the correct input form based on which sacrament is being recorded — each sacrament collects different information, and the system enforces this automatically. For sacraments that require a preparation class (such as First Communion or Confirmation), the system records the teacher, the school or location, and the start and end dates of the class, as well as whether the person sat and passed the exam. For sacraments that do not require preparation (such as Anointing of the Sick), those fields are not shown.</p>
-        <p>Staff can search for any person and immediately see every sacrament they have received, when it was administered, and who the teacher or officiant was. The system does not allow the same sacrament to be recorded twice for the same person, preventing duplicate entries.</p>
+        <p>The module has three core functions explained below.</p>
 
-        <h3>Sacrament Requirements by Type and Age</h3>
+        <div class="feature-list">
+
+          <div class="feature-block">
+            <div class="feature-num">1</div>
+            <div class="feature-body">
+              <div class="feature-name">Recording a New Sacrament for a Person</div>
+              <p class="feature-desc">Use this to record a sacrament that a person has received. The system automatically shows the right form for each sacrament type.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <span class="flow-label">Search &amp; open the person's household profile</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-cross"></i></span>
+                    <span class="flow-label">Click "Add Sacrament" — select the type</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-file-pen"></i></span>
+                    <span class="flow-label">Fill in the form that appears</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-floppy-disk"></i></span>
+                    <span class="flow-label">Click Save — permanently recorded</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">The form changes automatically for each sacrament type — preparation fields only appear for sacraments that require them.</p>
+              <div class="module-link"><i class="fa-solid fa-link"></i> Recipient must be registered in <strong>Module 1 — Christian Management</strong> first</div>
+              <div class="module-link"><i class="fa-solid fa-link"></i> Transfer records can be received from other parishes via <strong>Module 8 — Integrations: Inter-Parish</strong></div>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-table-list"></i> Data collected &amp; why</div>
+                <div class="data-row"><span class="data-field">Sacrament Type</span><span class="data-why">Baptism / First Communion / Confirmation / Marriage / Holy Orders / Anointing — required to classify the canonical record and load the correct form</span></div>
+                <div class="data-row"><span class="data-field">Date of Sacrament</span><span class="data-why">The actual date the sacrament was administered — canonical records require the date it happened, not the date it was entered</span></div>
+                <div class="data-row"><span class="data-field">Officiating Priest / Deacon</span><span class="data-why">Who administered the sacrament — required for canonical validity and may be needed for future verification</span></div>
+                <div class="data-row"><span class="data-field">Preparation Teacher &amp; Class Dates</span><span class="data-why">For sacraments requiring preparation classes (Communion, Confirmation) — proves the candidate completed the required programme</span></div>
+                <div class="data-row"><span class="data-field">Exam Result</span><span class="data-why">For sacraments with required exams — the system will not record the sacrament without confirming the exam was passed</span></div>
+                <div class="data-row"><span class="data-field">Witnesses (Marriage only)</span><span class="data-why">Names of the two canonical witnesses — required by church law for a valid Catholic marriage record</span></div>
+                <div class="data-row"><span class="data-field">Parish Where Received</span><span class="data-why">For sacraments received at another parish before the person transferred to Gahanga — completes the full canonical history</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> Jean Mugabo Jr. completes his First Communion preparation. The secretary opens the Mugabo household, finds Jean Jr. in the members list, opens Sacraments, adds a new entry for "First Communion," enters the teacher's name, the school, and the class dates, ticks that the exam was passed, and saves. Jean Jr.'s profile now permanently shows he received First Communion on that date.</div>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <div class="feature-num">2</div>
+            <div class="feature-body">
+              <div class="feature-name">Viewing a Person's Full Sacrament History</div>
+              <p class="feature-desc">Use this to see all sacraments a person has received — dates, teachers, and exam results — in one place.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <span class="flow-label">Search &amp; open the person's profile</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-cross"></i></span>
+                    <span class="flow-label">Click the "Sacraments" tab</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-list-check"></i></span>
+                    <span class="flow-label">Read the full sacrament history</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">All 6 sacraments visible on one screen — replaces searching through 6 separate paper registers.</p>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-eye"></i> Read-only — no data entered here</div>
+                <div class="data-row"><span class="data-field">What is displayed</span><span class="data-why">All sacraments on record for this person: type, date administered, officiating priest, preparation teacher, exam result, and witnesses — replacing 6 separate paper registers</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> A young man comes to the parish asking for a letter confirming his sacraments before getting married. The secretary opens his household record and sees in the Sacraments section: Baptized (date + priest), First Communion (date + teacher), Confirmed (date + teacher). She can print or reference this information immediately — no searching through old paper registers.</div>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <div class="feature-num">3</div>
+            <div class="feature-body">
+              <div class="feature-name">Preventing Duplicate Sacrament Records</div>
+              <p class="feature-desc">This works automatically — no action needed. If anyone tries to record a sacrament that is already in the system for the same person, the system blocks it.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-cross"></i></span>
+                    <span class="flow-label">Try to add a sacrament already recorded</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <span class="flow-label">System automatically checks the records</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-triangle-exclamation"></i></span>
+                    <span class="flow-label">Warning shown on screen</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-shield-halved"></i></span>
+                    <span class="flow-label">Entry blocked — check existing record</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">The same sacrament cannot be recorded twice for the same person. The system enforces this automatically.</p>
+              <div class="module-link"><i class="fa-solid fa-link"></i> Cross-checks against all existing entries in <strong>Module 5 — Sacraments</strong> for this person</div>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-shield-halved"></i> Automatic — no data entered, system checks on your behalf</div>
+                <div class="data-row"><span class="data-field">What the system checks</span><span class="data-why">When a new sacrament entry is started, the system compares the person's name and sacrament type against all existing records. If a match is found, the save is blocked and a warning is shown</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> A new staff member, not knowing the record already exists, tries to add a Baptism entry for Jean Mugabo Jr. The system detects that a Baptism for this person already exists in the database and displays a message: "This person already has a Baptism record — recorded on [date]." The duplicate is blocked.</div>
+            </div>
+          </div>
+
+        </div>
+
+        <h3 style="margin-top:32px;">Sacrament Requirements by Type and Age</h3>
         <table>
           <thead>
             <tr>
@@ -1403,11 +2339,115 @@
       <section class="section" id="module-6">
         <div class="section-label">Module 6</div>
         <h2>Parish Website</h2>
-        <p class="lead">The Parish Website module is the public face of Saint Joseph Gahanga Parish on the internet. Anyone — parishioners, visitors, or people looking to join the parish — can access it without needing a login or account.</p>
+        <p class="lead">The Parish Website module gives Saint Joseph Gahanga Parish a presence on the internet that anyone can access — parishioners, their families, visitors to the area, or people who want to find out about the parish before visiting. No login is required. The website is always open to the public.</p>
 
-        <h3>How It Works</h3>
-        <p>The website is managed entirely from within the same administration dashboard used for all other modules. There is no separate content management system to log into. When a staff member publishes an announcement in Module 3 (Publications) and marks it as public, it automatically appears on the parish website. The same applies to upcoming events and the parish programme schedule. This means the website always reflects the latest information posted by staff — there is no need to update two separate systems.</p>
-        <p>The website displays: parish identity and history, contact details and location, Mass times and the weekly schedule, current announcements, upcoming events, and the parish's published programme. The full detailed specification for the website's design, pages, and features will be submitted by Mr. KARANGWA Joseph as a separate requirements document.</p>
+        <p>The module has three core aspects explained below.</p>
+
+        <div class="feature-list">
+
+          <div class="feature-block">
+            <div class="feature-num">1</div>
+            <div class="feature-body">
+              <div class="feature-name">What the Public Sees on the Website</div>
+              <p class="feature-desc">The parish website is open to anyone — no account or login needed. Visitors can find parish information any time, day or night.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-mobile-screen-button"></i></span>
+                    <span class="flow-label">Open the parish website address</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-unlock"></i></span>
+                    <span class="flow-label">No account or login needed</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-church"></i></span>
+                    <span class="flow-label">Browse: parish info, Mass times, announcements &amp; events</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">Anyone with internet can find parish information 24/7 — no phone call to the office needed.</p>
+              <div class="module-link"><i class="fa-solid fa-link"></i> All content comes from <strong>Module 3 — Publications</strong> (items marked Public)</div>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-eye"></i> Public view — no login or data entry required</div>
+                <div class="data-row"><span class="data-field">What visitors can see</span><span class="data-why">Mass schedule, upcoming events, announcements, public documents, parish contacts, leadership, and history — all live, no staff action needed for each visit</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> A parishioner's family member living abroad wants to know what time Christmas Mass starts. They open the parish website on their phone, read the programme, and see the times — without anyone at the parish needing to answer a phone call or send a message.</div>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <div class="feature-num">2</div>
+            <div class="feature-body">
+              <div class="feature-name">How Content Is Managed — No Separate System</div>
+              <p class="feature-desc">You manage the website from inside the system — there is no separate website to log into or learn. Publishing in Module 3 updates the website automatically.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-bullhorn"></i></span>
+                    <span class="flow-label">Publish something in Module 3 (Publications)</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-globe"></i></span>
+                    <span class="flow-label">Set visibility to "Public"</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-bolt"></i></span>
+                    <span class="flow-label">It appears on the website automatically</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">No separate website update step. Publishing once puts it everywhere — the website is always current.</p>
+              <div class="module-link"><i class="fa-solid fa-link"></i> Fully controlled by <strong>Module 3 — Publications</strong> visibility settings — no separate website login</div>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-bolt"></i> Automatic — no extra data entry at this step</div>
+                <div class="data-row"><span class="data-field">How it works</span><span class="data-why">When any item in Module 3 is set to "Public" and saved, it appears on the website immediately. When it is set to "Internal" or deleted, it disappears. No separate website log-in, no extra steps</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> The secretary adds next week's Sunday bulletin as an Announcement in Module 3 and marks it as Public. Within seconds, without any additional steps, the bulletin appears on the parish website for anyone to read. There is no separate "update website" step required.</div>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <div class="feature-num">3</div>
+            <div class="feature-body">
+              <div class="feature-name">Full Website Specification</div>
+              <p class="feature-desc">The full design and page layout of the website will be defined in a requirements document submitted by Mr. KARANGWA Joseph before building begins.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-file-lines"></i></span>
+                    <span class="flow-label">Mr. KARANGWA submits requirements doc</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-pen-ruler"></i></span>
+                    <span class="flow-label">AbyTech designs pages to spec</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-globe"></i></span>
+                    <span class="flow-label">Website built &amp; launched</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">The final website design — which pages, what layout, what content — will be defined by that requirements document before AbyTech begins building.</p>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-table-list"></i> Static data needed to build the website</div>
+                <div class="data-row"><span class="data-field">Parish Contact Information</span><span class="data-why">Phone number, email, and physical address — for the website's contact section so visitors can reach the office</span></div>
+                <div class="data-row"><span class="data-field">Mass Schedule</span><span class="data-why">Days, times, and location names for each Mass — the most-visited section of any parish website</span></div>
+                <div class="data-row"><span class="data-field">Parish Leadership List</span><span class="data-why">Priest names, council members, commission heads — so visitors know who leads the parish before visiting</span></div>
+                <div class="data-row"><span class="data-field">Parish History &amp; Mission</span><span class="data-why">Founding story, key dates, patron saint information — for the "About" page that explains the parish's identity</span></div>
+                <div class="data-row"><span class="data-field">Page Layout Preferences</span><span class="data-why">Which pages to include, what order, what the homepage should show — to be specified by Mr. KARANGWA in the requirements document</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> Once Mr. KARANGWA Joseph submits the website requirements document, AbyTech Hub will design the website pages to match the parish's preferences — including which pages exist, how they look, and what content appears on each one.</div>
+            </div>
+          </div>
+
+        </div>
       </section>
 
       <hr class="divider" />
@@ -1418,13 +2458,124 @@
       <section class="section" id="module-7">
         <div class="section-label">Module 7</div>
         <h2>Reports &amp; Dashboard</h2>
-        <p class="lead">The Reports and Dashboard module gives parish leadership an instant, accurate view of the state of the parish — total Christians, every demographic breakdown, and financial summaries — without any manual counting or spreadsheet work.</p>
+        <p class="lead">The Reports and Dashboard module gives parish leadership instant, accurate numbers about the state of the parish — without counting by hand, without spreadsheets, and without waiting for someone to compile data. The numbers are always live. The moment anything changes in the system, the dashboard reflects it.</p>
 
-        <h3>How It Works</h3>
-        <p>The dashboard reads directly from the household and sacrament records stored in the system and calculates totals in real time. Parish leadership open the dashboard and immediately see the current total number of Christians registered across the whole parish. From there, they can apply filters to break the data down by any combination of the dimensions below. All data is live — when a new household is registered or a sacrament is recorded, the dashboard reflects it immediately. Reports can be exported and printed for submission to the diocese or for committee meetings.</p>
-        <p>The dashboard is filterable by Chapel Zone, by commission, or at the whole-parish level — so zone leaders can see figures for their area, and the Parish Priest can see the full picture.</p>
+        <p>The module has three core functions explained below.</p>
 
-        <h3>Dashboard Breakdown Dimensions</h3>
+        <div class="feature-list">
+
+          <div class="feature-block">
+            <div class="feature-num">1</div>
+            <div class="feature-body">
+              <div class="feature-name">Opening the Dashboard — Seeing the Full Parish at a Glance</div>
+              <p class="feature-desc">Open the dashboard any time to see the current total number of Christians and a full breakdown — always live, always accurate, nothing to prepare.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-chart-bar"></i></span>
+                    <span class="flow-label">Click "Dashboard" in the menu</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-bolt"></i></span>
+                    <span class="flow-label">Live totals load automatically</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-people-group"></i></span>
+                    <span class="flow-label">Read the gender &amp; age breakdown</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">Current parish numbers at a glance — no manual counting, no preparing a report before the meeting.</p>
+              <div class="module-link"><i class="fa-solid fa-link"></i> Reads live data from <strong>all 8 modules</strong> — household registrations, funds, publications, groups, sacraments, and more</div>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-eye"></i> Read-only — no data entered here</div>
+                <div class="data-row"><span class="data-field">What is displayed</span><span class="data-why">Total Christians · Breakdown by gender, age, family status, sacrament received, education level, and zone — all live counts, updated automatically as any record changes</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> The Parish Priest opens the dashboard at the start of a council meeting. He sees: Total Christians: 2,847 · Women: 1,102 · Men: 891 · Children: 654 · Youth: 200 — all current as of today, without anyone preparing a report beforehand.</div>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <div class="feature-num">2</div>
+            <div class="feature-body">
+              <div class="feature-name">Applying Filters — Breaking Down the Numbers</div>
+              <p class="feature-desc">Use this to narrow down the numbers — for example, see only one zone, or only people who have not yet received Confirmation.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-chart-bar"></i></span>
+                    <span class="flow-label">Open the Dashboard</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-sliders"></i></span>
+                    <span class="flow-label">Click "Add Filter"</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-location-dot"></i></span>
+                    <span class="flow-label">Select: Zone / Sacrament / Status / Education</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-chart-pie"></i></span>
+                    <span class="flow-label">Numbers update — read the result</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">Filters can be combined — "women in Zone Busanza who are widowed" — the answer appears in seconds.</p>
+              <div class="module-link"><i class="fa-solid fa-link"></i> Filter options come from data across <strong>Modules 1, 4 &amp; 5</strong> (households, groups, sacraments)</div>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-table-list"></i> Filter options &amp; why each matters</div>
+                <div class="data-row"><span class="data-field">Zone / Cluster</span><span class="data-why">Drill down to one geographic area — answers "how many in Busanza?" without seeing the whole parish</span></div>
+                <div class="data-row"><span class="data-field">Sacrament Received / Not Received</span><span class="data-why">Identifies who still needs a particular sacrament — used to plan preparation programmes and prioritize outreach</span></div>
+                <div class="data-row"><span class="data-field">Family Status</span><span class="data-why">Widowed / single parent / both spouses / separated — for targeted pastoral visits and support programmes</span></div>
+                <div class="data-row"><span class="data-field">Education Level</span><span class="data-why">For programmes targeting specific education groups and for diocese reporting requirements</span></div>
+                <div class="data-row"><span class="data-field">Age Group</span><span class="data-why">Children / Youth / Adults / Elderly — for age-appropriate activities and programme planning</span></div>
+                <div class="data-row"><span class="data-field">Date Range</span><span class="data-why">Scope any figure to a specific period — e.g., "how many households registered this year?"</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> The zone leader of Busanza wants to know how many people in her zone have not yet been confirmed. She opens the dashboard, applies filter: Zone = Busanza, Sacrament = Confirmation Not Received. The system shows the number immediately — she can now plan a Confirmation preparation programme knowing exactly how many people to target.</div>
+            </div>
+          </div>
+
+          <div class="feature-block">
+            <div class="feature-num">3</div>
+            <div class="feature-body">
+              <div class="feature-name">Exporting and Printing Reports</div>
+              <p class="feature-desc">Use this to generate a formatted report — for a meeting, a diocese submission, or a committee review.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-sliders"></i></span>
+                    <span class="flow-label">Set the view &amp; filters you want</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-file-export"></i></span>
+                    <span class="flow-label">Click "Export" or "Print"</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-file-lines"></i></span>
+                    <span class="flow-label">Save or print the formatted report</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">No retyping, no manual calculation. A report that used to take days now takes five minutes.</p>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-table-list"></i> Inputs needed to export</div>
+                <div class="data-row"><span class="data-field">Output Format</span><span class="data-why">PDF — for printing and presenting at meetings. Excel — for further editing or submitting to the diocese in spreadsheet format</span></div>
+                <div class="data-row"><span class="data-field">Report Scope</span><span class="data-why">Which filters are active at the time of export define exactly what data the report contains — set this before clicking Export</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> The diocese requests the annual statistics report showing the total number of Christians broken down by sacrament, gender, and marital status. The secretary opens the dashboard, sets the view to the full parish with all breakdowns, clicks Export, and sends the file — a task that previously took days of manual counting now takes five minutes.</div>
+            </div>
+          </div>
+
+        </div>
+
+        <h3 style="margin-top:32px;">Dashboard Breakdown Dimensions</h3>
         <table>
           <thead>
             <tr><th style="width:30%">Dimension</th><th>Categories</th></tr>
@@ -1453,47 +2604,205 @@
       <section class="section" id="module-8">
         <div class="section-label">Module 8</div>
         <h2>Integrations</h2>
-        <p class="lead">The Integrations module connects the parish management system to the external services that the parish already uses or needs to use — digital payments, text messaging, government systems, and social media. All of these connections are managed from within the same dashboard, not from separate apps.</p>
+        <p class="lead">The Integrations module connects the parish management system to the external services the parish uses — digital payments, text messaging, government systems, social media, and other churches. All of these connections work from within the same dashboard. Staff never need to open a separate app or website to use them.</p>
 
-        <h3>How It Works</h3>
-        <p>Each integration is a two-way or one-way connection between the parish system and an external platform. Once configured, staff do not need to open a separate app or website to use these services — the action happens from within the parish system itself.</p>
+        <p>There are five integrations, each explained below.</p>
 
-        <div class="int-grid">
-          <div class="int-card">
-            <div class="int-icon"><i class="fa-solid fa-comment-sms"></i></div>
-            <div>
-              <div class="int-title">SMS Gateway</div>
-              <div class="int-desc">Staff compose a message in the dashboard and select the recipients — an individual household, a group, a chapel zone, or the entire parish. The system sends the text message directly to each person's registered phone number. No phone app required. Used for announcements, event reminders, and urgent communications.</div>
+        <div class="feature-list">
+
+          <div class="feature-block">
+            <div class="feature-num">1</div>
+            <div class="feature-body">
+              <div class="feature-name">SMS Gateway — Sending Text Messages to Parishioners</div>
+              <p class="feature-desc">Use this to send a text message to any parishioner, group, zone, or the whole parish — from inside the dashboard, no phone needed.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-comment-sms"></i></span>
+                    <span class="flow-label">Open "Send SMS" in the dashboard</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-keyboard"></i></span>
+                    <span class="flow-label">Type the message</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-people-group"></i></span>
+                    <span class="flow-label">Select recipients: person / group / zone / whole parish</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-paper-plane"></i></span>
+                    <span class="flow-label">Click Send — delivered to all phones</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">No phone app, no copying numbers, no sending one by one. Everyone gets the SMS on their registered phone number.</p>
+              <div class="module-link"><i class="fa-solid fa-link"></i> Phone numbers come from <strong>Module 1 — Christian Management</strong> household records</div>
+              <div class="module-link"><i class="fa-solid fa-link"></i> Group and zone recipient lists come from <strong>Module 4 — Group Management</strong></div>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-table-list"></i> Data collected &amp; why</div>
+                <div class="data-row"><span class="data-field">Message Text</span><span class="data-why">The content of the SMS — must be clear and concise since SMS has a character limit and no formatting</span></div>
+                <div class="data-row"><span class="data-field">Recipients</span><span class="data-why">Individual / Group / Zone / Whole Parish — determines exactly who receives the message. Phone numbers are pulled automatically from Module 1, no manual list needed</span></div>
+                <div class="data-row"><span class="data-field">Scheduled Send Time (optional)</span><span class="data-why">For future-dated messages — e.g., send a Sunday morning reminder SMS on Friday evening. If not set, sends immediately</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> Sunday Mass is moved to a different time due to a bishop's visit. The secretary opens the dashboard, types the announcement, selects "Entire Parish" as the recipient group, and clicks Send. Every parishioner with a registered phone number receives the SMS within minutes — no group chat management or individual messages needed.</div>
             </div>
           </div>
-          <div class="int-card">
-            <div class="int-icon"><i class="fa-solid fa-money-bill-wave"></i></div>
-            <div>
-              <div class="int-title">Digital Payments — MTN MOMO &amp; Bank Transfer</div>
-              <div class="int-desc">Parishioners pay offerings, Mass booking fees, subscriptions, and other dues digitally using MTN Mobile Money or a bank transfer. When a payment is confirmed, the system automatically creates the corresponding entry in the Fund Management module (Module 2) — no manual data entry needed. The parish receives the payment and the record is created in one transaction.</div>
+
+          <div class="feature-block">
+            <div class="feature-num">2</div>
+            <div class="feature-body">
+              <div class="feature-name">Digital Payments — MTN MoMo and Bank Transfer</div>
+              <p class="feature-desc">Use this to accept contributions and fees electronically — the system records the payment automatically, no manual entry needed.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-mobile-screen-button"></i></span>
+                    <span class="flow-label">Parishioner sends payment via MoMo or bank</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-money-bill-wave"></i></span>
+                    <span class="flow-label">Payment provider sends confirmation to the system</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-bolt"></i></span>
+                    <span class="flow-label">System auto-creates a ledger entry</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-circle-check"></i></span>
+                    <span class="flow-label">Treasurer sees the contribution instantly</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">No manual step from staff — the ledger entry is created automatically the moment payment is confirmed.</p>
+              <div class="module-link"><i class="fa-solid fa-link"></i> Automatically creates a ledger entry in <strong>Module 2 — Fund Management</strong></div>
+              <div class="module-link"><i class="fa-solid fa-link"></i> Contributor identified by matching phone number against <strong>Module 1 — Christian Management</strong></div>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-bolt"></i> Received automatically from MTN MoMo or bank — no manual input</div>
+                <div class="data-row"><span class="data-field">Amount (RWF)</span><span class="data-why">The payment value — written directly to the Module 2 ledger with no staff action</span></div>
+                <div class="data-row"><span class="data-field">Payer Phone Number</span><span class="data-why">Matched against Module 1 household records to identify which household made the contribution</span></div>
+                <div class="data-row"><span class="data-field">Transaction Reference ID</span><span class="data-why">The MoMo or bank's unique identifier — stored for audit and reconciliation against official bank statements</span></div>
+                <div class="data-row"><span class="data-field">Timestamp</span><span class="data-why">Exact date and time of the payment — automatically becomes the date field in the Module 2 ledger entry</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> A parishioner pays 5,000 RWF for the annual family subscription via MTN MoMo. The moment the payment is confirmed by MTN, the system automatically adds it to the Fund Management ledger under the correct category with the correct amount and the parishioner's name — the treasurer sees it immediately without needing to check a phone or enter anything manually.</div>
             </div>
           </div>
-          <div class="int-card">
-            <div class="int-icon"><i class="fa-solid fa-landmark"></i></div>
-            <div>
-              <div class="int-title">Local Government Systems</div>
-              <div class="int-desc">The system can exchange data with Rwandan local government and citizen-record systems. This allows the parish to cross-verify household and identity information against official records and to submit required reports to government agencies directly from the system.</div>
+
+          <div class="feature-block">
+            <div class="feature-num">3</div>
+            <div class="feature-body">
+              <div class="feature-name">Local Government Systems — Data Exchange</div>
+              <p class="feature-desc">Use this to verify a person's official names or data against the national ID system, so parish records match government records from the start.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                    <span class="flow-label">Open the household record and click "Verify with Government"</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-building-columns"></i></span>
+                    <span class="flow-label">Government system checks the national ID database</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-circle-check"></i></span>
+                    <span class="flow-label">Official data returned — record confirmed or corrected</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">Parish records stay aligned with official government data. Government reports can also be submitted directly from the system without manual preparation.</p>
+              <div class="module-link"><i class="fa-solid fa-link"></i> Verified data is used to confirm or correct records in <strong>Module 1 — Christian Management</strong></div>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-table-list"></i> Data sent to the government system &amp; why</div>
+                <div class="data-row"><span class="data-field">National ID Number or Full Name</span><span class="data-why">The identifier sent to the government database — used to look up the person's official record</span></div>
+                <div class="data-row"><span class="data-field">Field Being Verified</span><span class="data-why">Name spelling / date of birth / address — tells the system what to compare so only relevant fields are returned</span></div>
+                <div class="data-row"><span class="data-field">Response from Government</span><span class="data-why">The official confirmed data is returned — staff can use it to correct the parish record in Module 1, ensuring both systems agree</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> A staff member is registering a new household but is uncertain about the correct spelling of the head's names. They use the government data check from within the system, which confirms the official name as recorded on the national ID — ensuring the parish record is accurate from the start.</div>
             </div>
           </div>
-          <div class="int-card">
-            <div class="int-icon"><i class="fa-solid fa-cross"></i></div>
-            <div>
-              <div class="int-title">Other Religious Organizations</div>
-              <div class="int-desc">The system supports data sharing and cooperation with other recognized churches and religious bodies in Rwanda — for example, verifying sacrament records when a parishioner transfers from another parish.</div>
+
+          <div class="feature-block">
+            <div class="feature-num">4</div>
+            <div class="feature-body">
+              <div class="feature-name">Other Religious Organizations — Sacrament and Transfer Verification</div>
+              <p class="feature-desc">Use this when registering a person who transferred from another parish — fetch their sacrament history digitally instead of asking them to bring paper certificates.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-person-walking-arrow-right"></i></span>
+                    <span class="flow-label">Open the new household record and click "Request Transfer Records"</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-church"></i></span>
+                    <span class="flow-label">System sends the request to the originating parish</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-circle-check"></i></span>
+                    <span class="flow-label">Originating parish confirms and releases the sacrament records</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-download"></i></span>
+                    <span class="flow-label">Click Import — full sacrament history added to the record</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">No paper certificates needed — the complete sacrament history arrives digitally. Works in both directions (Gahanga can also confirm records for parishes requesting theirs).</p>
+              <div class="module-link"><i class="fa-solid fa-link"></i> Imported records are stored in <strong>Module 5 — Sacraments</strong> on the household's profile</div>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-table-list"></i> Data exchanged between parishes</div>
+                <div class="data-row"><span class="data-field">Household or Individual Name</span><span class="data-why">The person whose records are being requested — must match exactly with the originating parish's database</span></div>
+                <div class="data-row"><span class="data-field">Originating Parish Name</span><span class="data-why">Where the records are currently held — the system contacts that parish directly to request the records</span></div>
+                <div class="data-row"><span class="data-field">Sacraments Requested</span><span class="data-why">All records or a specific sacrament type — narrows the request to what is actually needed to avoid unnecessary data sharing</span></div>
+                <div class="data-row"><span class="data-field">Confirmation from Originating Parish</span><span class="data-why">The other parish must approve the release — the records are only imported after they confirm, ensuring data integrity</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> A family transfers from Kicukiro Parish to Gahanga. The staff member begins registering them and uses the inter-parish verification feature to confirm which sacraments the children have already received. The Kicukiro Parish system returns the confirmed records — the staff member imports them directly rather than asking the family to bring physical certificates.</div>
             </div>
           </div>
-          <div class="int-card" style="grid-column:1/-1;">
-            <div class="int-icon"><i class="fa-solid fa-share-nodes"></i></div>
-            <div>
-              <div class="int-title">Social Media — X (Twitter) · WhatsApp · Facebook</div>
-              <div class="int-desc">When a staff member publishes an announcement or event in Module 3, they can choose to simultaneously share it to the parish's X, WhatsApp, and Facebook accounts — all from within the dashboard. The content is posted automatically without the staff member needing to open those platforms separately or copy and paste the text. This keeps all parish social media channels current with no extra effort.</div>
+
+          <div class="feature-block">
+            <div class="feature-num">5</div>
+            <div class="feature-body">
+              <div class="feature-name">Social Media — Auto-posting to X, WhatsApp, and Facebook</div>
+              <p class="feature-desc">Use this when publishing an announcement to automatically push it to the parish's social media channels at the same time — no opening apps separately.</p>
+              <div class="flow-wrap">
+                <div class="flow-diagram">
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-bullhorn"></i></span>
+                    <span class="flow-label">Write the announcement in Module 3 (Publications)</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box">
+                    <span class="flow-icon"><i class="fa-solid fa-square-check"></i></span>
+                    <span class="flow-label">Tick the checkboxes: Facebook / X / WhatsApp</span>
+                  </div>
+                  <span class="flow-arrow">→</span>
+                  <div class="flow-box-final">
+                    <span class="flow-icon"><i class="fa-solid fa-share-nodes"></i></span>
+                    <span class="flow-label">Click Publish — posted to all selected platforms simultaneously</span>
+                  </div>
+                </div>
+              </div>
+              <p class="flow-note">No opening separate apps, no copying and pasting. One publish action sends the announcement everywhere you ticked.</p>
+              <div class="module-link"><i class="fa-solid fa-link"></i> Content is sourced directly from <strong>Module 3 — Publications</strong> — no re-typing needed</div>
+              <div class="data-needs">
+                <div class="data-needs-title"><i class="fa-solid fa-table-list"></i> Data selected at posting time</div>
+                <div class="data-row"><span class="data-field">Platform Selection</span><span class="data-why">Facebook / X (Twitter) / WhatsApp — tick each channel you want to receive the post. Different announcements can go to different platforms</span></div>
+                <div class="data-row"><span class="data-field">Content Source</span><span class="data-why">The announcement from Module 3 is used as-is — no re-typing. The title and body are sent exactly as written in Module 3</span></div>
+              </div>
+              <div class="feature-example"><strong>Example:</strong> The secretary publishes the announcement for the upcoming parish retreat in Module 3, marks it as Public, and ticks the checkboxes for "Post to Facebook," "Post to X," and "Post to WhatsApp." One click publishes the announcement on the website and sends it to all three social media channels simultaneously — without the secretary needing to open Facebook, X, or WhatsApp at all.</div>
             </div>
           </div>
+
         </div>
       </section>
 

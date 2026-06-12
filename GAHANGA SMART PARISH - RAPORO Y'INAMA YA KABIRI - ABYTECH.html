@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gahanga Smart Parish — Second Meeting Documentation | AbyTech Hub</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/js/all.min.js" crossorigin="anonymous" defer></script>
   <style>
     :root {
       --brand: #1a5c78;
@@ -154,6 +154,29 @@
     .int-title { font-size: 15px; font-weight: 700; color: var(--brand-dark); }
     .int-desc  { font-size: 13px; color: var(--text-muted); margin-top: 4px; }
 
+    /* ── Data relationship tags ── */
+    .mod-connects { margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--border); display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .mod-connects-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--text-muted); margin-right: 4px; flex-shrink: 0; }
+    .rel-tag { display: inline-flex; align-items: center; gap: 5px; border-radius: 20px; padding: 4px 11px 4px 8px; font-size: 11.5px; font-weight: 600; }
+    .rel-sends { background: #e8f3f7; color: var(--brand); border: 1px solid #b8d8e5; }
+    .rel-sends i { color: var(--brand-light); font-size: 10px; }
+    .rel-receives { background: #fde8d8; color: #a0430a; border: 1px solid #f0b892; }
+    .rel-receives i { color: var(--brand-light); font-size: 10px; }
+
+    /* ── Relationship matrix ── */
+    .rel-matrix { width: 100%; border-collapse: collapse; margin-top: 20px; font-size: 12.5px; background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: var(--shadow); }
+    .rel-matrix th { background: var(--brand-dark); color: #fff; padding: 10px 12px; text-align: center; font-size: 11px; font-weight: 700; letter-spacing: 0.3px; }
+    .rel-matrix th.row-header { text-align: left; width: 180px; }
+    .rel-matrix td { padding: 9px 12px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+    .rel-matrix tr:last-child td { border-bottom: none; }
+    .rel-matrix tr:hover td { background: var(--brand-pale); }
+    .rel-matrix td.mod-name { font-weight: 700; color: var(--brand-dark); font-size: 12px; }
+    .rel-matrix td.sends-to { color: var(--brand); font-size: 12px; }
+    .rel-matrix td.receives-from { color: #a0430a; font-size: 12px; }
+    .rel-dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 5px; }
+    .rel-dot-send { background: var(--brand); }
+    .rel-dot-recv { background: var(--brand-light); }
+
     /* ── Sig grid ── */
     .sig-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 32px; margin-top: 28px; }
     .sig-block { text-align: center; }
@@ -201,6 +224,39 @@
       .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     }
   </style>
+
+<template id="__bundler_thumbnail" data-bg-color="#0a1e28">
+  <svg viewBox="0 0 200 130" xmlns="http://www.w3.org/2000/svg">
+    <!-- Page background -->
+    <rect width="200" height="130" fill="#0a1e28"/>
+    <!-- Sidebar strip -->
+    <rect width="42" height="130" fill="#061218"/>
+    <!-- AbyTech "A" logo in sidebar -->
+    <polygon points="21,8 35,40 29,40 21,18 13,40 7,40" fill="#1a5c78"/>
+    <rect x="26" y="8" width="12" height="4" fill="#e8621a"/>
+    <rect x="30" y="8" width="5" height="18" fill="#e8621a"/>
+    <!-- Hero banner -->
+    <rect x="50" y="12" width="142" height="28" rx="3" fill="#1a5c78" opacity="0.55"/>
+    <rect x="58" y="19" width="68" height="5" rx="2" fill="white" opacity="0.75"/>
+    <rect x="58" y="28" width="48" height="3" rx="2" fill="white" opacity="0.4"/>
+    <!-- Diagram nodes -->
+    <rect x="55" y="52" width="26" height="13" rx="3" fill="#1a5c78"/>
+    <rect x="90" y="46" width="26" height="13" rx="3" fill="#2d7a4f"/>
+    <rect x="130" y="52" width="26" height="13" rx="3" fill="#1a5c78"/>
+    <rect x="55" y="84" width="26" height="13" rx="3" fill="#e8621a" opacity="0.9"/>
+    <rect x="90" y="78" width="26" height="13" rx="3" fill="#0a1e28" stroke="#1a5c78" stroke-width="1.5"/>
+    <rect x="130" y="84" width="26" height="13" rx="3" fill="#1a5c78" opacity="0.7"/>
+    <!-- Connection arrows -->
+    <line x1="81" y1="59" x2="90" y2="54" stroke="#e8621a" stroke-width="1.2" opacity="0.85"/>
+    <line x1="116" y1="54" x2="130" y2="59" stroke="#e8621a" stroke-width="1.2" opacity="0.85"/>
+    <line x1="68" y1="65" x2="78" y2="78" stroke="#e8621a" stroke-width="1.2" opacity="0.85"/>
+    <line x1="103" y1="59" x2="103" y2="78" stroke="#e8621a" stroke-width="1.2" opacity="0.85"/>
+    <line x1="116" y1="84" x2="130" y2="88" stroke="#e8621a" stroke-width="1.2" opacity="0.85"/>
+    <!-- Matrix table rows hint -->
+    <rect x="50" y="103" width="142" height="6" rx="2" fill="#1a5c78" opacity="0.3"/>
+    <rect x="50" y="113" width="100" height="5" rx="2" fill="#1a5c78" opacity="0.2"/>
+  </svg>
+</template>
 </head>
 <body>
 
@@ -259,7 +315,8 @@
 
       <div class="nav-section">
         <div class="nav-section-label">Documents</div>
-        <a href="#annexes" class="nav-link"><span class="icon"><i class="fa-solid fa-paperclip"></i></span> Annexes</a>
+        <a href="#annexes"    class="nav-link"><span class="icon"><i class="fa-solid fa-paperclip"></i></span> Annexes</a>
+        <a href="#signatures" class="nav-link"><span class="icon"><i class="fa-solid fa-pen-nib"></i></span> Signatures</a>
       </div>
     </div>
   </nav>
@@ -372,6 +429,393 @@
         <h2>Data Requirements by Module</h2>
         <p class="lead">The committee reviewed and agreed on the exact data the software must capture for all 8 modules. The tables below record what was confirmed at this meeting. For the full description of how each module works, see the First Meeting documentation.</p>
 
+        <h3 style="margin-top:32px;">How Data Flows Between Modules</h3>
+        <p style="color:var(--text-muted);font-size:14px;margin-bottom:4px;">Each module either <span style="display:inline-block;background:#e8f3f7;color:var(--brand);border:1px solid #b8d8e5;border-radius:20px;padding:1px 10px;font-size:11.5px;font-weight:700;">sends data →</span> to another module or <span style="display:inline-block;background:#fde8d8;color:#a0430a;border:1px solid #f0b892;border-radius:20px;padding:1px 10px;font-size:11.5px;font-weight:700;">← receives data</span> from one. These connections are shown on every module block below.</p>
+        <!-- ── Interactive Data Model Diagram v2 ── -->
+        <div style="background:var(--white);border:1px solid var(--border);border-radius:14px;padding:22px 20px 16px;margin-bottom:20px;box-shadow:var(--shadow);">
+          <div style="display:flex;align-items:center;gap:10px;margin-bottom:2px;flex-wrap:wrap;">
+            <i class="fa-solid fa-diagram-project" style="color:var(--brand);font-size:15px;"></i>
+            <span style="font-size:15px;font-weight:800;color:var(--brand-dark);">Module Relationship Diagram</span>
+            <span style="background:var(--brand-pale);color:var(--brand);font-size:11px;font-weight:700;padding:2px 10px;border-radius:20px;border:1px solid var(--border);">8 modules · 12 connections</span>
+            <span style="font-size:11.5px;color:var(--text-muted);font-style:italic;margin-left:auto;">Click any module to inspect its connections</span>
+          </div>
+          <p style="font-size:12.5px;color:var(--text-muted);margin:6px 0 10px;">M8 Integrations sits at the centre as the data hub — connecting inward to 3 modules and receiving feeds from 3 others. Each badge shows the total number of connections a module has.</p>
+
+          <!-- Info panel — shown on click -->
+          <div id="mrd-info" style="display:none;background:var(--brand-pale);border:1px solid var(--border);border-radius:10px;padding:14px 18px 12px;margin-bottom:14px;">
+            <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+              <span id="mrd-info-badge" style="padding:3px 13px;border-radius:20px;font-weight:800;font-size:13px;color:#fff;"></span>
+              <span id="mrd-info-name" style="font-weight:700;color:var(--brand-dark);font-size:14px;"></span>
+              <button onclick="document.getElementById('mrd-info').style.display='none';mrdReset();" style="margin-left:auto;background:none;border:none;cursor:pointer;color:var(--text-muted);font-size:18px;line-height:1;">×</button>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+              <div>
+                <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.9px;color:#a0430a;margin-bottom:7px;">→ Sends data to</div>
+                <div id="mrd-info-sends" style="display:flex;flex-direction:column;gap:5px;"></div>
+              </div>
+              <div>
+                <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.9px;color:var(--brand);margin-bottom:7px;">← Receives from</div>
+                <div id="mrd-info-recv" style="display:flex;flex-direction:column;gap:5px;"></div>
+              </div>
+            </div>
+          </div>
+
+          <svg id="mrd-svg" viewBox="0 0 900 530" xmlns="http://www.w3.org/2000/svg" style="width:100%;display:block;overflow:visible;cursor:default;"></svg>
+
+          <!-- Legend -->
+          <div style="display:flex;gap:18px;flex-wrap:wrap;margin-top:10px;padding-top:10px;border-top:1px solid var(--border);align-items:center;">
+            <span style="font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:0.8px;">Legend</span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--text-muted);">
+              <svg width="36" height="10" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;flex-shrink:0"><defs><marker id="lg-a2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto" markerUnits="userSpaceOnUse"><polygon points="0 0,8 3,0 6" fill="#e8621a"/></marker></defs><line x1="0" y1="5" x2="32" y2="5" stroke="#e8621a" stroke-width="2" marker-end="url(#lg-a2)"/></svg>
+              Module-to-module data flow
+            </span>
+            <span style="display:flex;align-items:center;gap:6px;font-size:11.5px;color:var(--text-muted);">
+              <svg width="36" height="10" xmlns="http://www.w3.org/2000/svg" style="overflow:visible;flex-shrink:0"><defs><marker id="lg-b2" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto" markerUnits="userSpaceOnUse"><polygon points="0 0,8 3,0 6" fill="#2d7a4f"/></marker></defs><line x1="0" y1="5" x2="32" y2="5" stroke="#2d7a4f" stroke-width="2" marker-end="url(#lg-b2)"/></svg>
+              Hub (M8) connection
+            </span>
+            <span style="display:flex;align-items:center;gap:5px;font-size:11.5px;color:var(--text-muted);"><span style="width:11px;height:11px;border-radius:2px;background:#1a5c78;display:inline-block;"></span> Core</span>
+            <span style="display:flex;align-items:center;gap:5px;font-size:11.5px;color:var(--text-muted);"><span style="width:11px;height:11px;border-radius:2px;background:#e8621a;display:inline-block;"></span> Financial</span>
+            <span style="display:flex;align-items:center;gap:5px;font-size:11.5px;color:var(--text-muted);"><span style="width:11px;height:11px;border-radius:2px;background:#2d7a4f;display:inline-block;"></span> Integration hub</span>
+            <span style="display:flex;align-items:center;gap:5px;font-size:11.5px;color:var(--text-muted);"><span style="width:11px;height:11px;border-radius:2px;background:#0a1e28;display:inline-block;"></span> Reporting</span>
+            <span style="display:flex;align-items:center;gap:5px;font-size:11.5px;color:var(--text-muted);"><span style="width:14px;height:14px;border-radius:50%;background:#1a5c78;color:#fff;font-size:9px;font-weight:800;display:inline-flex;align-items:center;justify-content:center;">5</span> Connection count</span>
+          </div>
+        </div>
+        <script>
+        (function(){
+          var svg=document.getElementById('mrd-svg');
+          if(!svg)return;
+          var NS='http://www.w3.org/2000/svg';
+
+          var BW=128,BH=50,BR=10;
+          var CX=450,CY=264,R=196;
+
+          // 7 outer nodes equally spaced around the circle, starting at top (M1)
+          function rp(i){
+            var a=(i/7)*Math.PI*2-Math.PI/2;
+            return{x:Math.round(CX+R*Math.cos(a)),y:Math.round(CY+R*Math.sin(a))};
+          }
+
+          var p=[rp(0),rp(1),rp(2),rp(3),rp(4),rp(5),rp(6)];
+
+          var nodes=[
+            {id:'M1',label:'M1',sub:'Christian Mgmt', color:'#1a5c78',x:p[0].x,y:p[0].y,w:BW,h:BH},
+            {id:'M2',label:'M2',sub:'Fund Mgmt',       color:'#e8621a',x:p[1].x,y:p[1].y,w:BW,h:BH},
+            {id:'M3',label:'M3',sub:'Publications',    color:'#1a5c78',x:p[2].x,y:p[2].y,w:BW,h:BH},
+            {id:'M4',label:'M4',sub:'Group Mgmt',      color:'#1a5c78',x:p[3].x,y:p[3].y,w:BW,h:BH},
+            {id:'M5',label:'M5',sub:'Sacraments',      color:'#1a5c78',x:p[4].x,y:p[4].y,w:BW,h:BH},
+            {id:'M6',label:'M6',sub:'Parish Website',  color:'#1a5c78',x:p[5].x,y:p[5].y,w:BW,h:BH},
+            {id:'M7',label:'M7',sub:'Reports',         color:'#0a1e28',x:p[6].x,y:p[6].y,w:BW,h:BH},
+            {id:'M8',label:'M8',sub:'Integrations',    color:'#2d7a4f',x:CX,     y:CY,    w:148,h:58,hub:true},
+          ];
+
+          var edges=[
+            {from:'M1',to:'M4',lbl:'member rosters',  hub:false},
+            {from:'M1',to:'M5',lbl:'person lookup',   hub:false},
+            {from:'M1',to:'M7',lbl:'population data', hub:false},
+            {from:'M1',to:'M8',lbl:'SMS contacts',    hub:true},
+            {from:'M2',to:'M7',lbl:'financial records',hub:false},
+            {from:'M3',to:'M6',lbl:'website content', hub:false},
+            {from:'M3',to:'M8',lbl:'social media',    hub:true},
+            {from:'M4',to:'M8',lbl:'group SMS lists', hub:true},
+            {from:'M5',to:'M7',lbl:'sacrament status',hub:false},
+            {from:'M8',to:'M2',lbl:'payments auto',   hub:true},
+            {from:'M8',to:'M1',lbl:'gov. corrections',hub:true},
+            {from:'M8',to:'M5',lbl:'inter-parish',    hub:true},
+          ];
+
+          // Build connection info map for the info panel
+          var cinfo={};
+          nodes.forEach(function(n){cinfo[n.id]={name:n.sub,color:n.color,sends:[],receives:[]};});
+          edges.forEach(function(e){
+            cinfo[e.from].sends.push({to:e.to,lbl:e.lbl});
+            cinfo[e.to].receives.push({from:e.from,lbl:e.lbl});
+          });
+          window.mrdConnInfo=cinfo;
+
+          // Connection counts
+          var cc={};
+          nodes.forEach(function(n){cc[n.id]=0;});
+          edges.forEach(function(e){cc[e.from]++;cc[e.to]++;});
+
+          var nm={};
+          nodes.forEach(function(n){nm[n.id]=n;});
+
+          function mk(tag,attr){
+            var e=document.createElementNS(NS,tag);
+            if(attr)Object.keys(attr).forEach(function(k){e.setAttribute(k,attr[k]);});
+            return e;
+          }
+
+          // Box border intersection
+          function bpt(nx,ny,nw,nh,ox,oy){
+            var dx=ox-nx,dy=oy-ny;
+            var hw=nw/2,hh=nh/2;
+            if(Math.abs(dx)<0.01)return{x:nx,y:ny+(dy>0?hh:-hh)};
+            if(Math.abs(dy)<0.01)return{x:nx+(dx>0?hw:-hw),y:ny};
+            var tx=(dx>0?hw:-hw)/dx,yx=ny+dy*tx;
+            if(Math.abs(yx-ny)<=hh)return{x:nx+dx*tx,y:yx};
+            var ty=(dy>0?hh:-hh)/dy;
+            return{x:nx+dx*ty,y:ny+dy*ty};
+          }
+
+          // SVG defs
+          var defs=mk('defs');
+          defs.innerHTML=
+            '<marker id="ah-ring" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto" markerUnits="userSpaceOnUse"><polygon points="0 0,8 3,0 6" fill="#e8621a" opacity="0.75"/></marker>'+
+            '<marker id="ah-hub"  markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto" markerUnits="userSpaceOnUse"><polygon points="0 0,8 3,0 6" fill="#2d7a4f" opacity="0.85"/></marker>'+
+            '<marker id="ah-ring-hi" markerWidth="9" markerHeight="7" refX="9" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><polygon points="0 0,9 3.5,0 7" fill="#e8621a"/></marker>'+
+            '<marker id="ah-hub-hi"  markerWidth="9" markerHeight="7" refX="9" refY="3.5" orient="auto" markerUnits="userSpaceOnUse"><polygon points="0 0,9 3.5,0 7" fill="#2d7a4f"/></marker>'+
+            '<radialGradient id="hub-gl" cx="50%" cy="50%" r="50%"><stop offset="0%" stop-color="#2d7a4f" stop-opacity="0.15"/><stop offset="100%" stop-color="#2d7a4f" stop-opacity="0"/></radialGradient>'+
+            '<filter id="fshadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="1" dy="2" stdDeviation="3" flood-color="#0a1e28" flood-opacity="0.12"/></filter>';
+          svg.appendChild(defs);
+
+          // Dot-grid background
+          var bgG=mk('g',{opacity:'0.4'});
+          for(var gx=18;gx<900;gx+=28){
+            for(var gy=18;gy<530;gy+=28){
+              bgG.appendChild(mk('circle',{cx:gx,cy:gy,r:'1.2',fill:'#c5dde6'}));
+            }
+          }
+          svg.appendChild(bgG);
+
+          // Hub glow
+          svg.appendChild(mk('ellipse',{cx:CX,cy:CY,rx:'100',ry:'80',fill:'url(#hub-gl)'}));
+
+          // Ring orbit
+          svg.appendChild(mk('circle',{cx:CX,cy:CY,r:R,'fill':'none','stroke':'#c5dde6','stroke-width':'1','stroke-dasharray':'4 6',opacity:'0.55'}));
+
+          var egG=mk('g'),ngG=mk('g');
+          svg.appendChild(egG);
+          svg.appendChild(ngG);
+
+          // Draw edges
+          var eEls=[];
+          edges.forEach(function(edge,idx){
+            var fn=nm[edge.from],tn=nm[edge.to];
+            var isHub=edge.hub;
+            var sc=isHub?'#2d7a4f':'#e8621a';
+            var mnNorm=isHub?'url(#ah-hub)':'url(#ah-ring)';
+            var mnHi  =isHub?'url(#ah-hub-hi)':'url(#ah-ring-hi)';
+
+            var sp=bpt(fn.x,fn.y,fn.w,fn.h,tn.x,tn.y);
+            var ep=bpt(tn.x,tn.y,tn.w,tn.h,fn.x,fn.y);
+
+            var cpx,cpy;
+            if(!isHub){
+              // Curve ring-to-ring outward from centre
+              var mx=(sp.x+ep.x)/2,my=(sp.y+ep.y)/2;
+              var fx=mx-CX,fy=my-CY;
+              var fl=Math.sqrt(fx*fx+fy*fy)||1;
+              cpx=mx+(fx/fl)*50;
+              cpy=my+(fy/fl)*50;
+            } else {
+              // Hub spokes: alternate slight offset to separate bidirectional pairs
+              var mx2=(sp.x+ep.x)/2,my2=(sp.y+ep.y)/2;
+              var dx2=ep.x-sp.x,dy2=ep.y-sp.y;
+              var l2=Math.sqrt(dx2*dx2+dy2*dy2)||1;
+              var off=(idx%2===0?1:-1)*14;
+              cpx=mx2+(-dy2/l2)*off;
+              cpy=my2+(dx2/l2)*off;
+            }
+
+            var lx=0.25*sp.x+0.5*cpx+0.25*ep.x;
+            var ly=0.25*sp.y+0.5*cpy+0.25*ep.y;
+
+            var g=mk('g');
+            var path=mk('path',{
+              d:'M'+sp.x.toFixed(1)+','+sp.y.toFixed(1)+' Q'+cpx.toFixed(1)+','+cpy.toFixed(1)+' '+ep.x.toFixed(1)+','+ep.y.toFixed(1),
+              fill:'none',stroke:sc,'stroke-width':'1.7',
+              'stroke-opacity':'0.4','marker-end':mnNorm,
+            });
+
+            var tw=Math.max(edge.lbl.length*5.1+10,38);
+            var lbg=mk('rect',{
+              x:(lx-tw/2).toFixed(1),y:(ly-14).toFixed(1),
+              width:tw.toFixed(1),height:'14',rx:'4',
+              fill:'rgba(255,255,255,0.93)',stroke:'#d0d0d0','stroke-width':'0.5',
+              'pointer-events':'none',
+            });
+            var ltx=mk('text',{
+              x:lx.toFixed(1),y:(ly-3).toFixed(1),'text-anchor':'middle',
+              fill:'#444','font-size':'8.5','font-weight':'600',
+              'font-family':'Segoe UI,system-ui,sans-serif',
+              'pointer-events':'none',
+            });
+            ltx.textContent=edge.lbl;
+            g.appendChild(path);g.appendChild(lbg);g.appendChild(ltx);
+            egG.appendChild(g);
+            eEls.push({path:path,lbg:lbg,ltx:ltx,from:edge.from,to:edge.to,sc:sc,mnNorm:mnNorm,mnHi:mnHi});
+          });
+
+          // Draw nodes
+          var nEls={};
+          nodes.forEach(function(node){
+            var x=node.x,y=node.y,col=node.color,id=node.id;
+            var nw=node.w,nh=node.h;
+            var hdrH=node.hub?22:17;
+            var g=mk('g',{style:'cursor:pointer',filter:'url(#fshadow)'});
+
+            // Body
+            g.appendChild(mk('rect',{x:x-nw/2,y:y-nh/2,width:nw,height:nh,rx:BR,ry:BR,fill:'#fff',stroke:col,'stroke-width':node.hub?'2.5':'2'}));
+            // Header fill
+            g.appendChild(mk('rect',{x:x-nw/2,y:y-nh/2,width:nw,height:hdrH,rx:BR,ry:BR,fill:col}));
+            g.appendChild(mk('rect',{x:x-nw/2,y:y-nh/2+hdrH/2,width:nw,height:hdrH/2,fill:col}));
+
+            // Module label (in header)
+            var lbl=mk('text',{x:x,y:y-nh/2+hdrH-4.5,'text-anchor':'middle',fill:'#fff','font-size':node.hub?'12.5':'10.5','font-weight':'800','font-family':'Segoe UI,system-ui,sans-serif','letter-spacing':'0.4'});
+            lbl.textContent=node.label;
+
+            // Sub-name (in body)
+            var sub=mk('text',{x:x,y:y+nh/2-9,'text-anchor':'middle',fill:col,'font-size':node.hub?'11.5':'10.5','font-weight':'700','font-family':'Segoe UI,system-ui,sans-serif'});
+            sub.textContent=node.sub;
+
+            g.appendChild(lbl);g.appendChild(sub);
+
+            // Connection count badge (top-right corner)
+            g.appendChild(mk('circle',{cx:x+nw/2,cy:y-nh/2,r:'11',fill:col,stroke:'#fff','stroke-width':'2.5'}));
+            var bnt=mk('text',{x:x+nw/2,y:y-nh/2+4.5,'text-anchor':'middle',fill:'#fff','font-size':'9.5','font-weight':'800','font-family':'Segoe UI,system-ui,sans-serif'});
+            bnt.textContent=cc[id];
+            g.appendChild(bnt);
+
+            // "CENTRAL HUB" subtitle under M8
+            if(node.hub){
+              var hlbl=mk('text',{x:x,y:y+nh/2+15,'text-anchor':'middle',fill:'#2d7a4f','font-size':'9','font-weight':'700','font-family':'Segoe UI,system-ui,sans-serif','letter-spacing':'1.2px',opacity:'0.75'});
+              hlbl.textContent='● CENTRAL HUB';
+              g.appendChild(hlbl);
+            }
+
+            g.addEventListener('mouseenter',function(){hiNode(id);});
+            g.addEventListener('mouseleave',function(){if(!document.getElementById('mrd-info').dataset.pinned)mrdReset();});
+            g.addEventListener('click',function(ev){ev.stopPropagation();showInfo(id);});
+            ngG.appendChild(g);
+            nEls[id]=g;
+          });
+
+          // Click outside → reset
+          svg.addEventListener('click',function(){
+            document.getElementById('mrd-info').style.display='none';
+            document.getElementById('mrd-info').dataset.pinned='';
+            mrdReset();
+          });
+
+          // Highlight a module and its edges
+          function hiNode(id){
+            Object.keys(nEls).forEach(function(k){nEls[k].style.opacity=k===id?'1':'0.1';});
+            eEls.forEach(function(e){
+              var active=e.from===id||e.to===id;
+              e.path.setAttribute('stroke-opacity',active?'1':'0.04');
+              e.path.setAttribute('stroke-width',active?'2.5':'1.7');
+              e.path.setAttribute('marker-end',active?e.mnHi:e.mnNorm);
+              e.lbg.setAttribute('opacity',active?'1':'0');
+              e.ltx.setAttribute('opacity',active?'1':'0');
+              if(active){nEls[e.from].style.opacity='1';nEls[e.to].style.opacity='1';}
+            });
+          }
+
+          window.mrdReset=function(){
+            Object.keys(nEls).forEach(function(k){nEls[k].style.opacity='1';});
+            eEls.forEach(function(e){
+              e.path.setAttribute('stroke-opacity','0.4');
+              e.path.setAttribute('stroke-width','1.7');
+              e.path.setAttribute('marker-end',e.mnNorm);
+              e.lbg.setAttribute('opacity','1');
+              e.ltx.setAttribute('opacity','1');
+            });
+          };
+
+          // Show info panel
+          function showInfo(id){
+            var info=window.mrdConnInfo[id];
+            var panel=document.getElementById('mrd-info');
+            panel.dataset.pinned='1';
+            panel.style.display='block';
+            document.getElementById('mrd-info-badge').textContent=id;
+            document.getElementById('mrd-info-badge').style.background=info.color;
+            document.getElementById('mrd-info-name').textContent=info.name;
+
+            var se=document.getElementById('mrd-info-sends');
+            var re=document.getElementById('mrd-info-recv');
+            se.innerHTML='';re.innerHTML='';
+
+            if(!info.sends.length){
+              se.innerHTML='<span style="font-size:12px;color:#999;font-style:italic;">None (sink/display module)</span>';
+            } else {
+              info.sends.forEach(function(s){
+                var nc=window.mrdConnInfo[s.to];
+                var d=document.createElement('div');
+                d.style.cssText='display:flex;align-items:center;gap:7px;font-size:12px;';
+                d.innerHTML='<span style="background:'+nc.color+';color:#fff;padding:2px 9px;border-radius:20px;font-size:10.5px;font-weight:700;white-space:nowrap;">'+s.to+'</span><span style="color:#555;">'+s.lbl+'</span>';
+                se.appendChild(d);
+              });
+            }
+            if(!info.receives.length){
+              re.innerHTML='<span style="font-size:12px;color:#999;font-style:italic;">None (source module)</span>';
+            } else {
+              info.receives.forEach(function(r){
+                var nc=window.mrdConnInfo[r.from];
+                var d=document.createElement('div');
+                d.style.cssText='display:flex;align-items:center;gap:7px;font-size:12px;';
+                d.innerHTML='<span style="background:'+nc.color+';color:#fff;padding:2px 9px;border-radius:20px;font-size:10.5px;font-weight:700;white-space:nowrap;">'+r.from+'</span><span style="color:#555;">'+r.lbl+'</span>';
+                re.appendChild(d);
+              });
+            }
+            hiNode(id);
+          }
+        })();
+        </script>
+
+        <table class="rel-matrix">
+          <thead>
+            <tr>
+              <th class="row-header">Module</th>
+              <th>Sends Data To</th>
+              <th>Receives Data From</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="mod-name">M1 — Christian Mgmt</td>
+              <td class="sends-to"><span class="rel-dot rel-dot-send"></span>M4 · M5 · M7 · M8 (SMS contacts)</td>
+              <td class="receives-from"><span class="rel-dot rel-dot-recv"></span>M8 (gov. data corrections)</td>
+            </tr>
+            <tr>
+              <td class="mod-name">M2 — Fund Mgmt</td>
+              <td class="sends-to"><span class="rel-dot rel-dot-send"></span>M7 (financial reports)</td>
+              <td class="receives-from"><span class="rel-dot rel-dot-recv"></span>M8 (digital payments auto-entry)</td>
+            </tr>
+            <tr>
+              <td class="mod-name">M3 — Publications</td>
+              <td class="sends-to"><span class="rel-dot rel-dot-send"></span>M6 (website content) · M8 (social media)</td>
+              <td class="receives-from" style="color:var(--text-muted);font-style:italic;">Source module — no upstream dependencies</td>
+            </tr>
+            <tr>
+              <td class="mod-name">M4 — Group Mgmt</td>
+              <td class="sends-to"><span class="rel-dot rel-dot-send"></span>M8 (SMS group recipient lists)</td>
+              <td class="receives-from"><span class="rel-dot rel-dot-recv"></span>M1 (member household records)</td>
+            </tr>
+            <tr>
+              <td class="mod-name">M5 — Sacraments</td>
+              <td class="sends-to"><span class="rel-dot rel-dot-send"></span>M7 (sacrament status reports)</td>
+              <td class="receives-from"><span class="rel-dot rel-dot-recv"></span>M1 (person lookup) · M8 (inter-parish records)</td>
+            </tr>
+            <tr>
+              <td class="mod-name">M6 — Parish Website</td>
+              <td class="sends-to" style="color:var(--text-muted);font-style:italic;">Display only — public visitors</td>
+              <td class="receives-from"><span class="rel-dot rel-dot-recv"></span>M3 (all public content)</td>
+            </tr>
+            <tr>
+              <td class="mod-name">M7 — Reports</td>
+              <td class="sends-to"><span class="rel-dot rel-dot-send"></span>PDF / Excel exports</td>
+              <td class="receives-from"><span class="rel-dot rel-dot-recv"></span>M1 · M2 · M3 · M4 · M5 (all data modules)</td>
+            </tr>
+            <tr>
+              <td class="mod-name">M8 — Integrations</td>
+              <td class="sends-to"><span class="rel-dot rel-dot-send"></span>M2 (payments) · M1 (gov. corrections) · M5 (inter-parish)</td>
+              <td class="receives-from"><span class="rel-dot rel-dot-recv"></span>M1 (contacts) · M3 (social media content) · M4 (groups)</td>
+            </tr>
+          </tbody>
+        </table>
+
         <!-- M1 -->
         <div class="module-block" style="margin-top:28px;">
           <div class="mod-header">
@@ -382,16 +826,26 @@
             </div>
           </div>
           <table>
-            <thead><tr><th style="width:30%">Field</th><th>Description</th></tr></thead>
+            <thead><tr><th style="width:26%">Field</th><th>Description</th><th>Purpose — Why It Is Collected</th></tr></thead>
             <tbody>
-              <tr><td>Household Head</td><td>Full name of the head of the household</td></tr>
-              <tr><td>Hierarchy Position</td><td>Chapel Zone, Family Group Cluster, and Family Cluster this household belongs to</td></tr>
-              <tr><td>Members</td><td>Each individual: name, date of birth, gender, relationship to household head</td></tr>
-              <tr><td>Family Status</td><td>Both spouses present · Widowed · Single parent · Separated or divorced · Remarried</td></tr>
-              <tr><td>Education Level</td><td>Recorded per individual member</td></tr>
-              <tr><td>Contact Details</td><td>Phone number and physical address</td></tr>
+              <tr><td>Household Head</td><td>Full name of the head of the household</td><td>Identifies and addresses the household in all parish records, lists, and communications</td></tr>
+              <tr><td>Hierarchy Position</td><td><em>Santarali</em> (Chapel Zone) · <em>Impuzamiryangoremezo</em> (Family Group Cluster) · <em>Umuryangoremezo</em> (Family Cluster)</td><td>Assigns the household to the correct administrative chain — enables zone-level reporting and pastoral outreach</td></tr>
+              <tr><td>Members</td><td>Per individual: full name · date of birth · gender · relationship to household head</td><td>Enables individual-level sacrament tracking, age-group statistics, and demographic reporting</td></tr>
+              <tr><td>Family Status</td><td>Both spouses present · Widowed · Single parent · Separated or divorced · Remarried</td><td>For targeted pastoral care programmes and mandatory diocese statistical reports</td></tr>
+              <tr><td>Education Level</td><td>Recorded per individual household member</td><td>For educational outreach planning and diocese reporting requirements</td></tr>
+              <tr><td>Contact Details</td><td>Phone number and physical address</td><td>Phone — for SMS notifications and digital payment matching. Address — for pastoral visits and zone assignment verification</td></tr>
+              <tr><td>Registration Date</td><td>Date the household was first entered into the system</td><td>Historical record of when this household joined the parish community — used for anniversary follow-up and census accuracy</td></tr>
+              <tr><td>Record Status</td><td>Active or Deactivated</td><td>Deactivated records are archived, not deleted — preserves full history while removing the household from all active counts and reports</td></tr>
             </tbody>
           </table>
+          <div class="mod-connects">
+            <span class="mod-connects-label">Data connections:</span>
+            <span class="rel-tag rel-sends"><i class="fa-solid fa-arrow-right"></i> M4 — member roster links</span>
+            <span class="rel-tag rel-sends"><i class="fa-solid fa-arrow-right"></i> M5 — sacrament recipient lookup</span>
+            <span class="rel-tag rel-sends"><i class="fa-solid fa-arrow-right"></i> M7 — population reports</span>
+            <span class="rel-tag rel-sends"><i class="fa-solid fa-arrow-right"></i> M8 — SMS contact numbers</span>
+            <span class="rel-tag rel-receives"><i class="fa-solid fa-arrow-left"></i> M8 — government data corrections</span>
+          </div>
         </div>
 
         <!-- M2 -->
@@ -416,6 +870,11 @@
               <tr><td>Miscellaneous</td><td>Any other financial collection not covered by the above categories</td></tr>
             </tbody>
           </table>
+          <div class="mod-connects">
+            <span class="mod-connects-label">Data connections:</span>
+            <span class="rel-tag rel-sends"><i class="fa-solid fa-arrow-right"></i> M7 — financial reports &amp; totals</span>
+            <span class="rel-tag rel-receives"><i class="fa-solid fa-arrow-left"></i> M8 — digital payment entries (auto)</span>
+          </div>
         </div>
 
         <!-- M3 -->
@@ -438,6 +897,11 @@
               <tr><td>Parish Programme</td><td>The regular weekly and monthly schedule of Mass times, meetings, and activities</td></tr>
             </tbody>
           </table>
+          <div class="mod-connects">
+            <span class="mod-connects-label">Data connections:</span>
+            <span class="rel-tag rel-sends"><i class="fa-solid fa-arrow-right"></i> M6 — website public content</span>
+            <span class="rel-tag rel-sends"><i class="fa-solid fa-arrow-right"></i> M8 — social media auto-posts</span>
+          </div>
         </div>
 
         <!-- M4 -->
@@ -449,6 +913,7 @@
               <div class="mod-title">Group Management — Groups &amp; Member Data</div>
             </div>
           </div>
+          <p style="font-size:12.5px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px;">Groups registered in the system</p>
           <table>
             <thead><tr><th style="width:50%">Group</th><th>Type</th></tr></thead>
             <tbody>
@@ -462,7 +927,22 @@
               <tr><td>Catholic Action Groups</td><td>Apostolic / Lay Ministry</td></tr>
             </tbody>
           </table>
-          <p style="margin-top:14px;font-size:13.5px;color:var(--text-muted);">Per member: <strong>full name</strong> · <strong>personal identification details</strong> · <strong>role in the group</strong> (President, Secretary, Treasurer, Member, etc.)</p>
+          <p style="font-size:12.5px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:0.8px;margin-top:22px;margin-bottom:8px;">Data recorded per group member</p>
+          <table>
+            <thead><tr><th style="width:26%">Field</th><th>Description</th><th>Purpose — Why It Is Collected</th></tr></thead>
+            <tbody>
+              <tr><td>Full Name</td><td>Member's full name</td><td>Linked directly to their household record in Module 1 — no re-entry of data required</td></tr>
+              <tr><td>Personal ID / Date of Birth</td><td>National ID number or date of birth</td><td>Uniquely identifies the person within the group roster and prevents duplicate membership entries</td></tr>
+              <tr><td>Role in Group</td><td>President · Secretary · Treasurer · Member</td><td>Defines responsibilities — appears on the official roster, reports, and group communications</td></tr>
+              <tr><td>Date Joined</td><td>Date the person joined this group</td><td>For tenure tracking, commitment records, and long-service recognition planning</td></tr>
+              <tr><td>Contact Number</td><td>Phone number</td><td>Pulled from their Module 1 household record — used for group SMS notifications before meetings</td></tr>
+            </tbody>
+          </table>
+          <div class="mod-connects">
+            <span class="mod-connects-label">Data connections:</span>
+            <span class="rel-tag rel-sends"><i class="fa-solid fa-arrow-right"></i> M8 — group SMS recipient lists</span>
+            <span class="rel-tag rel-receives"><i class="fa-solid fa-arrow-left"></i> M1 — member household records (linked, not re-entered)</span>
+          </div>
         </div>
 
         <!-- M5 -->
@@ -543,6 +1023,12 @@
               </tr>
             </tbody>
           </table>
+          <div class="mod-connects">
+            <span class="mod-connects-label">Data connections:</span>
+            <span class="rel-tag rel-sends"><i class="fa-solid fa-arrow-right"></i> M7 — sacrament status in reports</span>
+            <span class="rel-tag rel-receives"><i class="fa-solid fa-arrow-left"></i> M1 — person &amp; household lookup</span>
+            <span class="rel-tag rel-receives"><i class="fa-solid fa-arrow-left"></i> M8 — inter-parish transfer records</span>
+          </div>
         </div>
 
         <!-- M6 -->
@@ -554,7 +1040,30 @@
               <div class="mod-title">Parish Website — Data Requirements</div>
             </div>
           </div>
-          <p style="font-size:13.5px;color:var(--text-muted);padding:4px 0;">Content sourced automatically from Module 3 (Publications): announcements, upcoming events, and parish programme. Full website specification to be submitted separately by Mr. KARANGWA Joseph.</p>
+          <p style="font-size:12.5px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:8px;">Content sourced automatically from Module 3 — Publications</p>
+          <table>
+            <thead><tr><th style="width:28%">Content Type</th><th>Source</th><th>How It Appears on the Website</th></tr></thead>
+            <tbody>
+              <tr><td>Announcements &amp; Notices</td><td>Module 3 — Publications</td><td>Displayed on the website homepage and news section when the item is set to Public</td></tr>
+              <tr><td>Upcoming Events</td><td>Module 3 — Publications</td><td>Displayed on the parish events calendar — updates automatically when new events are published</td></tr>
+              <tr><td>Parish Programme</td><td>Module 3 — Publications</td><td>Mass times and weekly schedule — displayed on the programme section of the website</td></tr>
+            </tbody>
+          </table>
+          <p style="font-size:12.5px;font-weight:700;color:var(--brand);text-transform:uppercase;letter-spacing:0.8px;margin-top:22px;margin-bottom:8px;">Static content configured once — specification by Mr. KARANGWA Joseph</p>
+          <table>
+            <thead><tr><th style="width:28%">Field</th><th>Description</th><th>Purpose — Why It Is Collected</th></tr></thead>
+            <tbody>
+              <tr><td>Parish Contact Information</td><td>Phone number, email address, physical address of the parish office</td><td>For the website contact section — enables any visitor to reach the parish office without knowing anyone personally</td></tr>
+              <tr><td>Mass Schedule</td><td>Days, times, and chapel location for each Mass celebration</td><td>The most-visited section of any parish website — must always be accurate and up to date</td></tr>
+              <tr><td>Parish Leadership</td><td>Priest names, parish council positions, commission leaders</td><td>So visitors know who leads the parish before visiting — builds trust and transparency</td></tr>
+              <tr><td>Parish History &amp; Mission</td><td>Founding story, key dates, patron saint, and mission statement</td><td>For the "About" page — explains the parish's identity, values, and place in the community</td></tr>
+            </tbody>
+          </table>
+          <p style="font-size:12.5px;color:var(--text-muted);margin-top:10px;font-style:italic;">Full page layout, design, and navigation structure to be specified by Mr. KARANGWA Joseph before website development begins.</p>
+          <div class="mod-connects">
+            <span class="mod-connects-label">Data connections:</span>
+            <span class="rel-tag rel-receives"><i class="fa-solid fa-arrow-left"></i> M3 — all public announcements, events &amp; programme (auto)</span>
+          </div>
         </div>
 
         <!-- M7 -->
@@ -576,6 +1085,14 @@
               <tr><td>Geographic Filter</td><td>Per Chapel Zone · Per Commission · Whole parish</td></tr>
             </tbody>
           </table>
+          <div class="mod-connects">
+            <span class="mod-connects-label">Data connections:</span>
+            <span class="rel-tag rel-receives"><i class="fa-solid fa-arrow-left"></i> M1 — household &amp; population data</span>
+            <span class="rel-tag rel-receives"><i class="fa-solid fa-arrow-left"></i> M2 — financial records</span>
+            <span class="rel-tag rel-receives"><i class="fa-solid fa-arrow-left"></i> M3 — publication records</span>
+            <span class="rel-tag rel-receives"><i class="fa-solid fa-arrow-left"></i> M4 — group &amp; membership data</span>
+            <span class="rel-tag rel-receives"><i class="fa-solid fa-arrow-left"></i> M5 — sacrament records</span>
+          </div>
         </div>
 
         <!-- M8 -->
@@ -599,6 +1116,15 @@
               <tr><td>Facebook</td><td>Share parish content and announcements on Facebook directly from the dashboard</td></tr>
             </tbody>
           </table>
+          <div class="mod-connects">
+            <span class="mod-connects-label">Data connections:</span>
+            <span class="rel-tag rel-sends"><i class="fa-solid fa-arrow-right"></i> M2 — digital payment entries (auto)</span>
+            <span class="rel-tag rel-sends"><i class="fa-solid fa-arrow-right"></i> M1 — government-verified corrections</span>
+            <span class="rel-tag rel-sends"><i class="fa-solid fa-arrow-right"></i> M5 — inter-parish sacrament records</span>
+            <span class="rel-tag rel-receives"><i class="fa-solid fa-arrow-left"></i> M1 — contact numbers for SMS</span>
+            <span class="rel-tag rel-receives"><i class="fa-solid fa-arrow-left"></i> M3 — content for social media posts</span>
+            <span class="rel-tag rel-receives"><i class="fa-solid fa-arrow-left"></i> M4 — group lists for SMS recipients</span>
+          </div>
         </div>
 
       </section>
@@ -628,6 +1154,39 @@
         </table>
       </section>
 
+
+      <hr class="divider" />
+
+      <!-- ══════════ SIGNATURES ══════════ -->
+      <section class="section" id="signatures">
+        <div class="section-label">Sign-off</div>
+        <h2>Signatures</h2>
+        <p class="lead">The undersigned confirm that this document accurately reflects the decisions and data requirements agreed upon at the second ICT Committee meeting on October 12, 2024.</p>
+
+        <div class="sig-grid">
+          <div class="sig-block">
+            <div class="sig-label">ICT Committee Chair</div>
+            <div class="sig-line">
+              <div class="sig-name">Mr. KARANGWA Joseph</div>
+              <div class="sig-role">ICT Committee — Gahanga Parish</div>
+            </div>
+          </div>
+          <div class="sig-block">
+            <div class="sig-label">Parish Priest</div>
+            <div class="sig-line">
+              <div class="sig-name">Padiri NTACOGORA Jean Marie Vianney</div>
+              <div class="sig-role">Saint Joseph Gahanga Parish</div>
+            </div>
+          </div>
+          <div class="sig-block">
+            <div class="sig-label">Document Prepared By</div>
+            <div class="sig-line">
+              <div class="sig-name">AbyTech Hub</div>
+              <div class="sig-role">Software Development Partner</div>
+            </div>
+          </div>
+        </div>
+      </section>
 
     </div><!-- /content -->
 
